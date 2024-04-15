@@ -1,0 +1,15 @@
+{
+  "name": "operis",
+  "version": "0.0.1",
+  "description": "An All in One Productivity Software",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "electron ."
+  },
+  "author": "Ian Samoei",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^29.3.0"
+  }
+}
