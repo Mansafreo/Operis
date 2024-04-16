@@ -1,4 +1,5 @@
 // main.js
+require('electron-reload')(__dirname);//To support hot-reloading for the UI
 
 const { app, BrowserWindow } = require('electron');
 
