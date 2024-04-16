@@ -3,6 +3,10 @@ body{
     padding: 0;
     font-family: sans-serif;
     background-size: fill;
+    overflow-x: hidden;
+    background-image: url("../Images/pattern_sprinkles-1_1_2_0-0_0_1__393737_666666.png");
+    background-size:fill;
+    background-position: center;
 }
 
 .navigation {
@@ -135,7 +139,6 @@ body{
     height: fit-content;
     justify-content:last baseline;
     display: flex;
-    
 }
 .sidebar ul li:hover{
     text-decoration: underline;
@@ -149,4 +152,65 @@ body{
 }
 .sidebar ul li a{
     padding: 5px;
+}
+
+li.my_workspace{
+    display: block !important;
+    height: fit-content;
+}
+li.my_workspace:hover{
+    text-decoration: none !important;
+}
+.my_workspace .toggle{
+    display: block;
+    height: fit-content;
+}
+.my_workspace #workspace_sublets{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#workspace_sublets span{
+    height: fit-content;
+    margin-left: 5%;
+    width:80%;
+    margin-top: 10px;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+    height: fit-content;
+    display: flex;
+}
+#workspace_sublets span:hover{
+    text-decoration: underline;
+}
+#workspace_sublets span img.icon{
+    width: 25px;
+    margin-right: 10px;
+    margin-top: -5px;
+}
+
+#dashboard{
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width:calc(100vw - 21vw);
+}
+#dashboard #banner{
+    height: 250px;
+}
+#dashboard #banner img{
+    height: 100%;
+    width: 100%;
+    position: center;
+}
+#welcome_message{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 50px;
+    text-align: center;
 }
