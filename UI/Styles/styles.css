@@ -287,3 +287,57 @@ li.my_workspace:hover{
     float: right;
     margin: 10px;
 }
+
+#itemTabs{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+#itemTabs .item{
+    width: 25%;
+    text-align: center;
+    border-radius: 5px;
+}
+#itemTabs h2{
+    color: white;
+    cursor: pointer;
+    margin: 0;
+    padding: 10px;
+}
+
+#itemTabs .ongoingProjects{
+    background-color: #2A3385;
+}
+#itemTabs .dueToday{
+    background-color: #7B3333;
+}
+#itemTabs .dueToday .itemTitle{
+    background-color: #58211a;
+}
+#itemTabs .events{
+    background-color: #2A8533;
+}
+#itemTabs .ongoingProjects .itemTitle{
+    background-color: #1d245e;
+}
+#itemTabs .events .itemTitle{
+    background-color: #1a5821;
+}
+
+#itemTabs .item .itemTitle{
+    padding: 3px 0px;
+    color: white;
+    width:100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.itemContent p{
+    background-color: white;
+    color: black;
+    width: 80%;
+    margin: 0;
+    padding: 10px;
+    margin: 7%;
+    text-align: center;
+}

@@ -21,6 +21,6 @@ function set_date() {
 }
 
 window.onload = function() {
-    setInterval(set_time, 1000);
-    setInterval(set_date, 1000);
+    setInterval(set_time, 1000);//Call the set_time function every 1000 milliseconds
+    setInterval(set_date, 1000);//Call the set_time function every 1000 milliseconds
 }
