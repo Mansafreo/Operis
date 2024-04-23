@@ -25,6 +25,7 @@ const {
 }= require(chronoPath);
 //End of chrono Module
 
+
 window.onload = function() {
     generateCurrentMonth();
     toggleCalendar();//Hide the calendar on load

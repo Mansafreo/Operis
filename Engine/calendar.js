@@ -46,25 +46,27 @@ function generateCurrentMonth() {
 //Function to handle the next month button click
 function nextMonth() {
    //get current year and month from the calendar element
-   const calendarElement = document.getElementById('calendar');
-   const currentYear = parseInt(calendarElement.dataset.year);
+   let calendarElement = document.getElementById('calendar');
+   let currentYear = parseInt(calendarElement.dataset.year);
    let currentMonth = parseInt(calendarElement.dataset.month);
     if (currentMonth === 12) {
         currentMonth = 1;
+        currentYear++;
     } else {
         currentMonth++;
     }
-    
+    console.log(currentYear);
     generateCalendar(currentYear, currentMonth);
     replaceCalendarHead();
 }
 //Function to handle the previous month button click
 function previousMonth() {
     //get current year and month from the calendar element
-    const calendarElement = document.getElementById('calendar');
-    const currentYear = parseInt(calendarElement.dataset.year);
+    let calendarElement = document.getElementById('calendar');
+    let currentYear = parseInt(calendarElement.dataset.year);
     let currentMonth = parseInt(calendarElement.dataset.month);
     if (currentMonth === 1) {
+        currentYear--;
         currentMonth = 12;
     } else {
         currentMonth--;
@@ -74,11 +76,13 @@ function previousMonth() {
 }
 //To replace the name of the month in the UI
 function replaceCalendarHead() {
-    const calendarElement = document.getElementById('calendar');
-    const currentYear = parseInt(calendarElement.dataset.year);
+    let calendarElement = document.getElementById('calendar');
+    let currentYear = parseInt(calendarElement.dataset.year);
     let currentMonth = parseInt(calendarElement.dataset.month);
     let monthName = getMonthName(currentMonth);
     document.getElementById('Month').querySelector("h2").textContent = monthName;
+    //set the year
+    document.getElementById('Year').querySelector("h2").textContent = currentYear;
 }
 
 function toggleCalendar() {
