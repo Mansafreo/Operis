@@ -20,7 +20,13 @@ function set_date() {
     date_display.innerHTML = date_string;
 }
 
-window.onload = function() {
-    setInterval(set_time, 1000);//Call the set_time function every 1000 milliseconds
-    setInterval(set_date, 1000);//Call the set_time function every 1000 milliseconds
-}
+// window.onload = function() {
+//     setInterval(set_time, 1000);//Call the set_time function every 1000 milliseconds
+//     setInterval(set_date, 1000);//Call the set_time function every 1000 milliseconds
+// }
+
+//Export the functions
+module.exports = {
+    set_time,
+    set_date
+};

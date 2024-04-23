@@ -1,3 +1,6 @@
+/*Import Files */
+@import "calendar.css";
+
 body{
     margin: 0;
     padding: 0;
@@ -365,14 +368,4 @@ li.my_workspace:hover{
 .itemContent .urgency .time{
     float: right;
     color: rgb(78, 44, 169);
-}
-
-#calendar{
-    background-color: #18181c;
-    position: absolute;
-    top: 80px;
-    right: 0;
-    height: calc(100vh - 80px);
-    width:calc(100vw - 21vw);
-    display: none;
 }
