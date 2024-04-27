@@ -99,13 +99,13 @@
 }
 #calendarHeading h2{
     margin: 0;
-    padding: 10px;
+    padding: 20px;
 }
 #calendarHeading img{
     width: 30px;
     height: 30px;
     cursor: pointer;
-    margin: 10px;
+    margin: 20px;
 }
 #calendarHeading h2:hover{
     text-decoration: underline;
@@ -131,4 +131,79 @@
     margin: 0;
     padding: 10px;
     text-align: center;
+}
+.calendar #addEvent{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    color: white;
+    height: 100%;
+    margin: 0 10px;
+    right: 30px;
+    padding: -10px;
+    cursor: pointer;
+    padding-right: 20px !important;
+    margin-right: 20px;
+}
+.calendar #addEvent img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.calendar #addEvent:hover{
+    background-color: #1c1c1c;
+    color: #fff;
+}
+.calendar #addEvent:active{
+    transform: perspective(1px) scale(0.9);
+}
+
+#eventForm{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: fit-content;
+    transform: translate(-50%, -50%);
+    background-color: #000;
+    color: white;
+    padding: 20px;
+    border: 1px solid #5d5d5d;
+    z-index: 100;
+    width: 50vw;
+}
+#eventForm .icon{
+    position: absolute;
+    width: 40px;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+#eventForm .icon:hover{
+    transform: perspective(1px) scale(1.1);
+}
+#eventForm .icon:active{
+    transform: perspective(1px) scale(0.9);
+}
+#eventFormContent{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#eventFormContent input, #eventFormContent textarea{
+    padding: 10px;
+    border: 1px solid #5d5d5d;
+    background-color: #1c1c1c;
+    color: white;
+    outline: none;
+}
+#eventFormContent button{
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    border: 1px solid #5d5d5d;
+    cursor: pointer;
+    outline: none;
 }

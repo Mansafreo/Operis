@@ -6,9 +6,12 @@
     <title>Operis</title>
     <!--link the styling sheet-->
     <link rel="stylesheet" href="./Styles/styles.css" type="text/css">
-    <script src="./Javascript/helper.js"></script>
+    <script src="./Javascript/helper.js" defer></script>
 </head>
 <body>
+    <!--Hidden input to set whether it is a personal or shared workspace-->
+    <input type="hidden" id="workspaceType" value="personal">
+
    <section class="navigation">
        <div id="navbar">
         <!--Button to add new workspace-->
@@ -174,6 +177,10 @@
             <span id="Month"><h2>April</h2></span>
             <span id="Year"><h2>2024</h2></span>
            <img src="Images/icons8-chevron-right-48.png" alt="right" class="icon rightArrow" onclick="nextMonth()">
+           <div id="addEvent" onclick="addEvent()">
+               <img src="Images/icons8-plus-24.png" alt="add" class="icon">
+               <span>Add Event</span>
+            </div>
     </div>
     <div id="calendarDays">
         <span>Sun</span>
@@ -187,6 +194,23 @@
     <div id="calendar">
        
     </div>
+
+    <div id="eventForm">
+        <div id="eventFormHeading">
+            <h2>Add Event</h2>
+            <img src="Images/icons8-close-48.png" alt="close" class="icon" onclick="toggleEventForm()">
+        </div>
+        <div id="eventFormContent">
+            <label for="eventTitle">Event Title</label>
+            <input type="text" id="eventTitle" placeholder="Event Title">
+            <label for="eventDate">Event Date</label>
+            <input type="date" id="eventDate">
+            <label for="eventTime">Event Time</label>
+            <input type="time" id="eventTime">
+            <label for="eventDescription">Event Description</label>
+            <textarea id="eventDescription" placeholder="Event Description"></textarea>
+            <button id="saveEvent" onclick="saveEvent()">Save</button>
+        </div>
   </section>
 </body>
 </html>

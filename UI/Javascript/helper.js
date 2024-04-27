@@ -25,11 +25,23 @@ const {
 }= require(chronoPath);
 //End of chrono Module
 
+//Event Module
+const eventPath = resolve(__dirname, '../Engine', 'events.js');//Relative to the HTML in the renderer process
+const { 
+    saveEvent,
+    addEvent,
+    getEvent,
+    deleteEvent,
+    updateEvent,
+    getEvents,
+    toggleEventForm
+}= require(eventPath);
 
 window.onload = function() {
     generateCurrentMonth();
     toggleCalendar();//Hide the calendar on load
     setInterval(set_time, 1000);//Call the set_time function every 1000 milliseconds
     setInterval(set_date, 1000);//Call the set_time function every 1000 milliseconds
+    toggleCalendar();//Hide the calendar on load
 }
 
