@@ -1,23 +1,35 @@
-// main.js
-require('electron-reload')(__dirname);//To support hot-reloading for the UI
-const path=require('path');//To support the use of path.resolve
-let main_file=path.resolve(__dirname, 'UI', 'index.html');
+const electronReload = require('electron-reload');
+const path = require('path');
 const { app, BrowserWindow } = require('electron');
+
+// Resolve paths to files and directories
+const mainFile = path.resolve(__dirname, 'UI', 'index.html');
+const dbDirectory = path.resolve(__dirname, 'Database');
+
+// Define paths to exclude from reloading
+const ignoredPaths = [
+  dbDirectory // Exclude the Database directory itself
+];
+
+// Configure electron-reload with ignored paths
+electronReload(__dirname, {
+  ignored: ignoredPaths
+});
 
 function createWindow() {
   // Create the browser window
   const mainWindow = new BrowserWindow({
     width: 1980,
     height: 1000,
-    fullscreen: false,//This is set to true to make the window full screen
+    fullscreen: false,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false//This is set to false to allow the use of require in the UI
+      contextIsolation: false
     }
   });
 
   // Load your HTML file or URL
-  mainWindow.loadFile(main_file);
+  mainWindow.loadFile(mainFile);
 }
 
 // Create the main window when the app is ready

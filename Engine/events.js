@@ -4,7 +4,12 @@
 const path = require('path');
 //Import the models module
 const modelsPath = path.resolve(__dirname, '../Database', 'models.js');
-const models = require(modelsPath);
+const {
+    Users,
+    Workspaces,
+    Calendars,
+    Events
+}= require(modelsPath);
 
 //Function to toggle the event form
 function toggleEventForm(){
@@ -27,32 +32,50 @@ async function saveEvent()
         ,time: eventTime
     }
     //Get the authenticated User
-    let userID;
-    await models.user.getUser().then((user) => {
-        userID=user[0].userID;
-       return userID;
+    let userID=await Users.findOne({
+        where: {
+            verified: true
+        }
+    }).then((user) => {
+        return user.userID;
     });
     //Get the type of workspace
     let workspaceType=document.getElementById('workspaceType').value;
     //Get the workspaceID
+    //Get the workspaceID of the authenticated user from the database
     let workspaceID;
-    await models.workspace.getWorkspace(workspaceType,userID).then((workspace) => {
-        workspaceID=workspace[0].workspaceID;
+    await Workspaces.findOne({
+        where: {
+            userID: userID,
+            workspaceType: workspaceType
+        }
+    }).then((workspace) => {
+        workspaceID=workspace.workspaceID;
         return workspaceID;
     });
     //To get the calendarID that belongs to the workspace
     let calendarID;
-    await models.calendar.getCalendar(workspaceID).then((calendar) => {
-        calendarID=calendar[0].calendarID;
+    //Get the calendarID of the authenticated user from the database
+    await Calendars.findOne({
+        where: {
+            workspaceID: workspaceID
+        }
+    }).then((calendar) => {
+        calendarID=calendar.calendarID;
         return calendarID;
     });
     console.log(calendarID);
     //To create a new event object
-    let newEvent = new models.event(calendarID,userID,event.date,event.time,event.description,event.title);
-    //To set the event properties
-    console.log(newEvent);
-    //To save the event
-    newEvent.save();
+    // To create a new event object
+    let newEvent = {
+        eventTitle: event.title,
+        eventDescription: event.description,
+        eventDate: event.date,
+        eventTime: event.time,
+        calendarID: calendarID
+    };
+    // To save the event to the database
+    await Events.create(newEvent);
 }
 
 function addEvent(){
