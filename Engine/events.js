@@ -16,14 +16,31 @@ function toggleEventForm(){
     //Get the eventForm
     let eventForm = document.getElementById('eventForm');
     //Toggle the eventForm display property
-    eventForm.style.display = eventForm.style.display === 'none' ? 'block' : 'none';
+    if(eventForm.style.display=='none' || eventForm.style.display=='')
+    {
+        eventForm.style.display='block';
+    }
+    else
+    {
+        eventForm.style.display='none';
+    }
 }
 
 async function saveEvent()
 {
     let eventTitle = document.getElementById('eventTitle').value;
+    if(eventTitle.length==0)
+    {
+        console.log("Please enter the event title");
+        return;
+    }
     let eventDescription = document.getElementById('eventDescription').value;
     let eventDate = document.getElementById('eventDate').value;
+    if(eventDate.length==0)
+    {
+        console.log("Please enter the event date");
+        return;
+    }
     let eventTime = document.getElementById('eventTime').value;
     let event = {
         title: eventTitle
@@ -75,7 +92,13 @@ async function saveEvent()
         calendarID: calendarID
     };
     // To save the event to the database
-    await Events.create(newEvent);
+    await Events.create(newEvent)
+    toggleEventForm();
+}
+
+function showEventsForDay(date)
+{
+    console.log(date);
 }
 
 function addEvent(){
@@ -85,5 +108,5 @@ function addEvent(){
 //export the addEvent function
 module.exports = {
     toggleEventForm
-    ,addEvent,saveEvent
+    ,addEvent,saveEvent,showEventsForDay
 }

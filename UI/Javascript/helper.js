@@ -34,12 +34,12 @@ const {
     deleteEvent,
     updateEvent,
     getEvents,
-    toggleEventForm
+    toggleEventForm,
+    showEventsForDay
 }= require(eventPath);
 
 window.onload = function() {
     generateCurrentMonth();
-    toggleCalendar();//Hide the calendar on load
     setInterval(set_time, 1000);//Call the set_time function every 1000 milliseconds
     setInterval(set_date, 1000);//Call the set_time function every 1000 milliseconds
     toggleCalendar();//Hide the calendar on load
