@@ -61,7 +61,7 @@
                         <img src="Images/icons8-calendar-50.png" alt="calendar" class="icon">
                         Calendar
                     </span>
-                    <span>
+                    <span onclick="toggleTasks()">
                         <img src="Images/icons8-task-50.png" alt="todo" class="icon">
                         Tasks
                     </span>
@@ -211,6 +211,67 @@
             <textarea id="eventDescription" placeholder="Event Description"></textarea>
             <button id="saveEvent" onclick="saveEvent()">Save</button>
         </div>
+  </section>
+
+  <section class="tasks">
+    <div id="tasksHeading">
+        <img src="Images/icons8-task-50.png" alt="task" class="icon">
+        <span id="title"><h2>Tasks</h2></span>
+        <div id="addTask" onclick="toggleTaskForm()">
+            <img src="Images/icons8-plus-24.png" alt="add" class="icon">
+            <span>Add Task</span>
+        </div>
+    </div>
+    <div id="taskForm">
+        <div id="tasksFormHeading">
+            <h2>Add Task</h2>
+            <img src="Images/icons8-close-48.png" alt="close" class="icon" onclick="toggleTaskForm()">
+        </div>
+        <div id="tasksFormContent">
+            <label for="taskTitle">Task Title</label>
+            <input type="text" id="taskTitle" name="taskTitle" placeholder="Task Title">
+            <label for="taskDate">Task Date</label>
+            <input type="date" id="taskDate" name="taskDate">
+            <label for="taskTime">Task Time</label>
+            <input type="time" id="taskTime" name="taskTime">
+            <label for="taskPriority">Task Priority</label>
+            <select id="taskPriority" name="taskPriority">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <label for="taskDueDate">Task Due Date</label>
+            <input type="date" id="taskDueDate" name="taskDueDate">
+            <label for="taskDescription">Task Description</label>
+            <textarea id="taskDescription" placeholder="Task Description" name="taskDescription"></textarea>
+            <label for="taskStatus">Task Status</label>
+            <select id="taskStatus" name="taskStatus">
+                <option value="Not Started">Not Started</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <button id="saveTask" onclick="saveTask()">Save</button>
+        </div>
+    </div>
+    <div id="tasksBar">
+        <span class="filter">Filter</span>
+        <select id="taskFilter" onchange="loadTasks()">
+            <option value="All">All</option>
+            <option value="For_Today">For Today</option>
+            <option value="Not_Started">Not Started</option>
+            <option value="In_Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="High_Priority">High Priority</option>
+            <option value="Medium_Priority">Medium Priority</option>
+            <option value="Low_Priority">Low Priority</option>
+            <option value="Overdue">Overdue</option>
+            <option value="Due_Today">Due Today</option>
+            <option value="This_Month">This Month</option>
+        </select>
+    </div>
+    <div id="tasks">
+        <h2>Loading...</h2>
+    </div>
   </section>
 </body>
 </html>

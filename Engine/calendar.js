@@ -159,7 +159,7 @@ function replaceCalendarHead() {
 
 function toggleCalendar() {
     const calendarElement = document.getElementsByClassName('calendar')[0];
-    if (calendarElement.style.display === 'none') {
+    if (calendarElement.style.display === 'none' || calendarElement.style.display === '') {
         generateCurrentMonth();
         calendarElement.style.display = 'block';
     } else {

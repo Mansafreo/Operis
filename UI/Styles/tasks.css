@@ -1,0 +1,237 @@
+/*To style the task view*/
+.tasks{
+background-color: #18181c;
+position: absolute;
+top: 80px;
+right: 0;
+height: calc(100vh - 80px);
+width:calc(100vw - 21vw);
+display: none;
+}
+#tasksHeading{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    background-color: #000;
+    color: white;
+    height: 10%;
+    color: wheat;
+    vertical-align: middle;
+}
+#tasksHeading img{
+    display: absolute;
+    height: 40px;
+    margin: 15px;
+    margin-right: 10px;
+    left:0 ;
+}
+#addTask{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2b2a2a;
+    color: white;
+    height: 80%;
+    margin: 7px 70px;
+    right: 30px;
+    padding: -20px;
+    cursor: pointer;
+    padding-right: 20px !important;
+    margin-right: 20px;
+}
+#addTask img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+#addTask span{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+#addTask:hover{
+    background-color: #1c1c1c;
+    color: #fff;
+}
+#addTask:active{
+    transform: perspective(1px) scale(0.9);
+}
+#taskForm{
+    display: none;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    height: fit-content;
+    transform: translate(-50%, -50%);
+    background-color: #000;
+    color: white;
+    padding: 20px;
+    border: 1px solid #5d5d5d;
+    z-index: 100;
+    width: 50vw;
+}
+#taskForm .icon{
+    position: absolute;
+    width: 40px;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+#taskForm .icon:hover{
+    transform: perspective(1px) scale(1.1);
+}
+#taskForm .icon:active{
+    transform: perspective(1px) scale(0.9);
+}
+#taskForm input{
+    width: 95%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #5d5d5d;
+    outline: none;
+}
+#taskForm textarea{
+    width: 95%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 1px solid #5d5d5d;
+    outline: none;
+}
+#taskForm select{
+    width: 98%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 1px solid #5d5d5d;
+    outline: none;
+}
+#taskFormHeading{
+    display: flex;
+    justify-content: center;
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+#taskFormContent{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#saveTask{
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    border: 1px solid #5d5d5d;
+    cursor: pointer;
+    outline: none;
+    font-size: 1.5em;
+}
+#saveTask:hover{
+    background-color: #1c1c1c;
+    color: #fff;
+}
+#saveTask:active{    transform: perspective(1px) scale(0.9);
+}
+
+#tasksBar{
+    display: flex;
+    flex-direction: grid;
+    gap: 10px;
+    height: fit-content;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #050526;
+}
+#tasksBar select{
+    color: white;
+    max-width: 30%;
+    width: fit-content;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 1px solid #5d5d5d;
+    outline: none;
+    background-color: transparent;
+}
+#tasksBar select option{
+    color: black;
+}
+#tasksBar .filter{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: middle;
+    height: 100%;
+    margin: 20px 20px;
+}
+#tasks{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background-color: #000000;
+    height: 80%;
+    overflow-y: auto;
+}
+#tasks .task{
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1c1c1c;
+    color: white;
+    padding: 10px;
+    border: 1px solid #5d5d5d;
+}
+/* #tasks .task:active{
+    transform: perspective(1px) scale(0.9);
+} */
+#tasks .task .taskTitle{
+    font-size: 1.2em;
+    width: 30%;
+}
+#tasks .task .taskContent{
+    width: 60%;
+    font-size: 1em;
+}
+.task .taskActions{
+    width:10%;
+    display: flex;
+    gap: 10px;
+}
+.task .taskActions img{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.priority-High{
+    color: rgb(177, 73, 73);
+}
+.priority-Medium{
+    color: rgb(170, 128, 79);
+}
+.priority-Low{
+    color: rgb(161, 172, 80);
+}
+.status-i{
+    color: rgb(142, 177, 73);
+}
+.status-n{
+    color: rgb(177, 73, 73);
+}
+.status-c{
+    color: rgb(73, 177, 177);
+}
+/* style the scrollbar */
+#tasks::-webkit-scrollbar {
+    width: 10px;
+}
+#tasks::-webkit-scrollbar-thumb {
+    background-color: #0c0c4b;
+    border-radius: 10px;
+}

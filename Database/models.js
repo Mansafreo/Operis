@@ -91,7 +91,44 @@ const Events = sequelize.define('Event', {
         allowNull: false
     }
 });
-
+//Create the tasks model
+//[taskID, Title, Description, DueDate, Date, Status, workspaceID]
+const Tasks = sequelize.define('Task', {
+    taskID: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,      // Make 'id' the primary key
+        autoIncrement: true    // Enable auto-increment
+    },
+    Title: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    Description: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    DueDate: {
+        type: DataTypes.DATEONLY,
+        allowNull: false
+    },
+    Date: {
+        type: DataTypes.DATEONLY,
+        allowNull: false
+    },
+    Status: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    Priority:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    //Foreign Key
+    workspaceID: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
+});
 
 
 
@@ -139,6 +176,11 @@ module.exports = {
     Workspaces,
     Calendars,
     Events,
+    sync,
+    createUser,
+    createWorkspace,
+    createCalendar,
+    Tasks
 };
 
 

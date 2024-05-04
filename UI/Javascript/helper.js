@@ -38,6 +38,17 @@ const {
     showEventsForDay
 }= require(eventPath);
 
+//Tasks Module
+const tasksPath = resolve(__dirname, '../Engine', 'tasks.js');//Relative to the HTML in the renderer process
+const { 
+    toggleTasks,
+    toggleTaskForm,
+    saveTask,
+    loadTasks,
+    saveTaskEdit,
+    deleteTask,
+}= require(tasksPath);
+
 window.onload = function() {
     generateCurrentMonth();
     setInterval(set_time, 1000);//Call the set_time function every 1000 milliseconds
