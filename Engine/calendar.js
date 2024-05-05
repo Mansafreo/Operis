@@ -176,5 +176,5 @@ module.exports={
     nextMonth:nextMonth,//exporting the function
     previousMonth:previousMonth,//exporting the function
     replaceCalendarHead:replaceCalendarHead,//exporting the function
-    toggleCalendar:toggleCalendar//exporting the function
+    toggleCalendar:toggleCalendar,//exporting the function
 }

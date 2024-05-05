@@ -251,11 +251,20 @@ async function getTasks() {
 
 
 async function loadTasks()
-{
+{   
+    let taskContainer = document.getElementById("tasks");
+    let loading=document.createElement('h2');
+    loading.textContent="Loading...";
+    loading.style.textAlign="center";
+    loading.style.marginTop="20px";
+    loading.style.color="white";
+    loading.style.fontFamily="Arial, sans-serif";
+    loading.style.fontSize="20px";
+    taskContainer.appendChild(loading);
     //Get the tasks
     let tasks = await getTasks();
     //Get the html element that contains the tasks
-    let taskContainer = document.getElementById("tasks");
+   
     //clear the tasks
     taskContainer.innerHTML = "";
     //Loop through the tasks
@@ -401,8 +410,10 @@ function saveTaskEdit(event) {
     toggleTaskForm();
     //Change the save button event listener back to the original
     let saveButton = document.getElementById("saveTask");
+    //Remove all the event listeners
+    saveButton.removeEventListener('click', saveTaskEdit);
     saveButton.onclick = null;
-    saveButton.onclick = saveTask;
+    saveButton.addEventListener('click', saveTask);
 }
 function deleteTask(event) {
     //Use a confirm dialog to confirm the deletion

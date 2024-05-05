@@ -104,7 +104,7 @@
                     <h2>My day
                         <img src="Images/icons8-sun-50.png" alt="sun" class="icon">
                     </h2>
-                    <h2>Calendar
+                    <h2 onclick="toggleCalendar()">Calendar
                         <img src="Images/icons8-calendar-50.png" alt="calendar" class="icon">
                     </h2>
                     <h2>Backlog
@@ -211,6 +211,16 @@
             <textarea id="eventDescription" placeholder="Event Description"></textarea>
             <button id="saveEvent" onclick="saveEvent()">Save</button>
         </div>
+    </div>
+
+    <div id="eventsBox">
+        <h2>Events</h2>
+        <!--close button-->
+        <img src="Images/icons8-close-48.png" alt="close" class="icon" onclick="toggleEventsBox()">
+        <div id="events">
+            <h2>Loading...</h2>
+        </div>
+    </div>
   </section>
 
   <section class="tasks">

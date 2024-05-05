@@ -13,7 +13,9 @@ const {
     nextMonth,
     previousMonth,
     replaceCalendarHead,
-    toggleCalendar
+    toggleCalendar,
+    createEventBubbles,
+    createEventForm,
 }= require(calendarPath);
 //End of Calendar Module
 
@@ -35,7 +37,8 @@ const {
     updateEvent,
     getEvents,
     toggleEventForm,
-    showEventsForDay
+    showEventsForDay,
+    toggleEventsBox,
 }= require(eventPath);
 
 //Tasks Module
@@ -53,6 +56,5 @@ window.onload = function() {
     generateCurrentMonth();
     setInterval(set_time, 1000);//Call the set_time function every 1000 milliseconds
     setInterval(set_date, 1000);//Call the set_time function every 1000 milliseconds
-    toggleCalendar();//Hide the calendar on load
 }
 

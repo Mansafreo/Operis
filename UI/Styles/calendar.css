@@ -218,3 +218,70 @@
     cursor: pointer;
     border-radius: 10px;
 }
+
+#eventsBox{
+    display:none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: fit-content;
+    transform: translate(-50%, -50%);
+    background-color: #000;
+    color: white;
+    padding: 20px;
+    border: 1px solid #5d5d5d;
+    z-index: 100;
+    width: 50vw;
+}
+#eventsBox .icon{
+    position: absolute;
+    width: 40px;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+#events .event {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    display: flex;
+}
+#events .eventDetails{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction:row;
+    width: 80%;
+}
+#events .event .title {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+#events .event .description {
+    text-align:right;
+    font-size: 16px;
+    color: #666;
+}
+#events .event .date {
+    font-size: 16px;
+    color: #666;
+}
+.event .eventActions{
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    width:20%;
+    float: right;
+    height: 100%;
+    margin: 10px;
+    margin-left: 40px;
+}
+.event .delete ,.event .edit{
+    width:30px;
+    margin: 10px;
+    cursor: pointer;
+    float: right;
+}
