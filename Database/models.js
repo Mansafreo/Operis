@@ -5,7 +5,7 @@ const dbPath = path.resolve(__dirname, 'database.db');
 // Initialize Sequelize with SQLite dialect
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: dbPath
+    storage: dbPath,
 });
 //Users Model
 const Users = sequelize.define('User', {
@@ -170,6 +170,37 @@ function createCalendar() {
     });
 }
 
+//Create the projects
+const Projects = sequelize.define('Project', {
+    projectID: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,      // Make 'id' the primary key
+        autoIncrement: true    // Enable auto-increment
+    },
+    // Model attributes are defined here
+    ProjectName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    ProjectDescription: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    ProjectDueDate: {
+        type: DataTypes.DATEONLY,
+        allowNull: false
+    },
+    ProjectStatus: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    //Foreign Key
+    workspaceID: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
+});
+
 //Export the models
 module.exports = {
     Users,
@@ -180,7 +211,8 @@ module.exports = {
     createUser,
     createWorkspace,
     createCalendar,
-    Tasks
+    Tasks,
+    Projects
 };
 
 

@@ -11,14 +11,15 @@
 <body>
     <!--Hidden input to set whether it is a personal or shared workspace-->
     <input type="hidden" id="workspaceType" value="Personal">
+    <input type="hidden" id="workspaceID" value="1">
 
    <section class="navigation">
        <div id="navbar">
-        <!--Button to add new workspace-->
+        <!--Button to switch workspaces-->
             <div class="add-workspace">
                 <!--plus sign icon-->
-                <img src="images/icons8-plus-50.png" alt="plus" class="plusIcon">
-                <button id="add-workspace">Add Workspace</button>
+                <img src="images/icons8-switch-48.png" alt="plus" class="plusIcon">
+                <button id="add-workspace">Switch Workspace</button>
             </div>
         <!--search bar for the workspace-->
             <div class="search">
@@ -69,7 +70,7 @@
                         <img src="Images/icons8-notes-50.png" alt="notes" class="icon">
                         Notes
                     </span>
-                    <span>
+                    <span onclick="toggleProjects()">
                         <img src="Images/icons8-project-50.png" alt="projects" class="icon">
                         Projects
                     </span>
@@ -282,6 +283,83 @@
     <div id="tasks">
         <h2>Loading...</h2>
     </div>
+  </section>
+
+  <section class="projects">
+    <!--Heading section-->
+    <div id="projectsHeading">
+        <img src="Images/icons8-project-50.png" alt="projects" class="icon">
+        <span id="title"><h2>Projects</h2></span>
+        <div id="addProject" onclick="toggleProjectForm()">
+            <img src="Images/icons8-plus-24.png" alt="add" class="icon">
+            <span>Add Project</span>
+        </div>
+    </div>
+    <!--Section to Filter Projects-->
+    <div id="projectsBar">
+        <span class="filter">Filter</span>
+        <select id="projectFilter" onchange="loadProjects()">
+            <option value="All">All</option>
+            <option value="Not_Started">Not Started</option>
+            <option value="In_Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Overdue">Overdue</option>
+            <option value="Due_Today">Due Today</option>
+            <option value="This_Month">This Month</option>
+        </select>
+    </div>
+    <!--Section to show projects-->
+    <div id="projectsList">
+    <div class="project">
+        <div class="projectTitle">
+            <p>Operis Personal Productivity</p>
+        </div>
+        <div class="projectContent">
+            <div class="projectCard">
+                <div class="cardHeader">
+                    <p>Description</p>
+                </div>
+                <div class="cardBody">
+                    <p>aafsasfahsgdahsgfahsfasgfhagsfdfg</p>
+                </div>
+                <div class="cardFooter">
+                    <p>Status: In Progress</p>
+                    <p>Due Date: 2023-08-10</p>
+                    <p>Tasks: 50</p>
+                    <div class="cardButtons">
+                        <button class="editButton">
+                            <img src="Images/icons8-edit-50.png" alt="edit" class="icon">
+                        </button>
+                        <button class="deleteButton">
+                            <img src="Images/icons8-trash-24.png" alt="delete" class="icon">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--Section for the Project Form-->
+    <div id="projectForm">
+        <div id="projectFormHeading">
+            <h2>Add Project</h2>
+            <img src="Images/icons8-close-48.png" alt="close" class="icon" onclick="toggleProjectForm()">
+        </div>
+        <div id="projectFormContent">
+            <label for="projectName">Project Name</label>
+            <input type="text" id="projectName" name="projectName" placeholder="Project Name">
+            <label for="projectDescription">Project Description</label>
+            <textarea id="projectDescription" placeholder="Project Description" name="projectDescription"></textarea>
+            <label for="projectDueDate">Project Due Date</label>
+            <input type="date" id="projectDueDate" name="projectDueDate">
+            <label for="projectStatus">Project Status</label>
+            <select id="projectStatus" name="projectStatus">
+                <option value="Not Started">Not Started</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <button id="saveProject" onclick="saveProject()">Save</button>
+        </div>
   </section>
 </body>
 </html>

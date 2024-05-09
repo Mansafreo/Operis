@@ -3,8 +3,6 @@
 const path = require('path');
 let modelsPath = path.resolve(__dirname,'../Database' ,'models.js');
 const { Workspaces,Tasks } = require(modelsPath);
-let cachePath = path.resolve(__dirname,'../Database' ,'cache.js');
-const { cache } = require(cachePath);
 //Import the sequelize operators
 const { Op } = require('sequelize');
 //Function to toggle Tasks view
@@ -42,6 +40,7 @@ function saveTask()
 {
     //Get the form
     let form = document.getElementById("taskForm");
+    let WID = document.getElementById("workspaceID").value;
     //Get the form data
     let taskTitle = form.querySelector('input[name="taskTitle"]').value;
     let taskDescription = form.querySelector('textarea[name="taskDescription"]').value;
@@ -57,7 +56,6 @@ function saveTask()
         taskStatus: taskStatus,
         taskPriority: taskPriority
     }
-    //Get the workspaceID from the cache
     //Create a new task
     Tasks.create({
         Title: data.taskTitle,
@@ -66,7 +64,7 @@ function saveTask()
         Date: data.taskDate,
         Status: data.taskStatus,
         Priority: data.taskPriority,
-        workspaceID: cache.get("workspaceID")
+        workspaceID: WID//Get the workspaceID from the DOM
     }).then(task => {
         console.log(`Task created\n ${task}`);
     });
@@ -81,7 +79,7 @@ function saveTask()
 //To retreive tasks from the database
 async function getTasks() {
     try {
-        let WID = cache.get("workspaceID");
+        let WID = document.getElementById("workspaceID").value;
         let tasksArray = [];
         // Get the filter value so we can filter the tasks
         let filter = document.getElementById("taskFilter").value;

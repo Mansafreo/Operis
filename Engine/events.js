@@ -51,28 +51,9 @@ async function saveEvent()
         ,date: eventDate
         ,time: eventTime
     }
-    //Get the authenticated User
-    let userID=await Users.findOne({
-        where: {
-            verified: true
-        }
-    }).then((user) => {
-        return user.userID;
-    });
-    //Get the type of workspace
-    let workspaceType=document.getElementById('workspaceType').value;
     //Get the workspaceID
     //Get the workspaceID of the authenticated user from the database
-    let workspaceID;
-    await Workspaces.findOne({
-        where: {
-            userID: userID,
-            workspaceType: workspaceType
-        }
-    }).then((workspace) => {
-        workspaceID=workspace.workspaceID;
-        return workspaceID;
-    });
+    let workspaceID=document.getElementById('workspaceID').value;
     //To get the calendarID that belongs to the workspace
     let calendarID;
     //Get the calendarID of the authenticated user from the database
@@ -84,7 +65,6 @@ async function saveEvent()
         calendarID=calendar.calendarID;
         return calendarID;
     });
-    console.log(calendarID);
     //To create a new event object
     // To create a new event object
     let newEvent = {
@@ -110,30 +90,9 @@ async function saveEvent()
 
 async function getEvents(date){
     let eventsArray=[];
-    //Get the authenticated User
-    let userID=await Users.findOne({
-        where: {
-            verified: true
-        }
-    }).then((user) => {
-        return user.userID;
-    });
-    //Get the type of workspace
-    let workspaceType=document.getElementById('workspaceType').value;
     //Get the workspaceID
     //Get the workspaceID of the authenticated user from the database
-    let workspaceID;
-    await Workspaces.findOne({
-        where: {
-            userID: userID,
-            workspaceType: workspaceType
-        }
-    }).then((workspace) => {
-        workspaceID=workspace.workspaceID;
-        return workspaceID;
-    });
-    //To get the calendarID that belongs to the workspace
-    let calendarID;
+    let workspaceID=document.getElementById('workspaceID').value;
     //Get the calendarID of the authenticated user from the database
     await Calendars.findOne({
         where: {
@@ -175,7 +134,6 @@ async function showEventsForDay(date)
 }
 function createEventElement(eventData) {
     eventData=eventData.dataValues;
-    console.log(eventData);
     // Create main event container
     const eventDiv = document.createElement('div');
     eventDiv.classList.add('event');
@@ -310,34 +268,12 @@ async function deleteEvent(event)
     generateCalendar(year, month);
 }
 
-async function confirmDeleteEvent() {
-    const choice = await dialog.showMessageBox({
-        type: 'question',
-        buttons: ['Yes', 'No'],
-        defaultId: 1,
-        title: 'Confirm Delete',
-        message: 'Are you sure you want to delete this event?'
-    });
-
-    return choice.response === 0; // Returns true if the user clicks 'Yes'
-}
-
 async function updateEvent(event)
 {
     let id=event.target.getAttribute('value');
     let eventTitle = document.getElementById('eventTitle').value;
-    if(eventTitle.length==0)
-    {
-        console.log("Please enter the event title");
-        return;
-    }
     let eventDescription = document.getElementById('eventDescription').value;
     let eventDate = document.getElementById('eventDate').value;
-    if(eventDate.length==0)
-    {
-        console.log("Please enter the event date");
-        return;
-    }
     let eventTime = document.getElementById('eventTime').value;
     let eventData= {
         title: eventTitle
@@ -345,28 +281,8 @@ async function updateEvent(event)
         ,date: eventDate
         ,time: eventTime
     }
-    //Get the authenticated User
-    let userID=await Users.findOne({
-        where: {
-            verified: true
-        }
-    }).then((user) => {
-        return user.userID;
-    });
-    //Get the type of workspace
-    let workspaceType=document.getElementById('workspaceType').value;
-    //Get the workspaceID
     //Get the workspaceID of the authenticated user from the database
-    let workspaceID;
-    await Workspaces.findOne({
-        where: {
-            userID: userID,
-            workspaceType: workspaceType
-        }
-    }).then((workspace) => {
-        workspaceID=workspace.workspaceID;
-        return workspaceID;
-    });
+    let workspaceID=document.getElementById('workspaceID').value;
     //To get the calendarID that belongs to the workspace
     let calendarID;
     //Get the calendarID of the authenticated user from the database

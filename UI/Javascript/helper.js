@@ -52,9 +52,21 @@ const {
     deleteTask,
 }= require(tasksPath);
 
+//Projects Module
+const projectsPath = resolve(__dirname, '../Engine', 'projects.js');//Relative to the HTML in the renderer process
+const { 
+    toggleProjects,
+    saveProject,
+    loadProjects,
+    saveProjectEdit,
+    deleteProject,
+    toggleProjectForm,
+}= require(projectsPath);   
+
 window.onload = function() {
     generateCurrentMonth();
     setInterval(set_time, 1000);//Call the set_time function every 1000 milliseconds
     setInterval(set_date, 1000);//Call the set_time function every 1000 milliseconds
+    toggleProjects();
 }
 

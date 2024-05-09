@@ -1,6 +1,7 @@
 /*Import Files */
 @import "calendar.css";
 @import "tasks.css";
+@import "projects.css";
 body{
     margin: 0;
     padding: 0;
