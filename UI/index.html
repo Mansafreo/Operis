@@ -361,5 +361,47 @@
             <button id="saveProject" onclick="saveProject()">Save</button>
         </div>
   </section>
+
+  <section id="kanban">
+    <div id="kanbanHeading">
+        <img src="Images/icons8-kanban-50.png" alt="kanban" class="icon">
+        <span id="title"><h2>Kanban</h2></span>
+        <div id="addKanban" onclick="toggleKanbanForm()">
+            <img src="Images/icons8-plus-24.png" alt="add" class="icon">
+            <span>Add Kanban</span>
+        </div>
+    </div>
+    <div id="kanbanForm">
+        <div id="kanbanFormHeading">
+            <h2>Add Kanban</h2>
+            <img src="Images/icons8-close-48.png" alt="close" class="icon" onclick="toggleKanbanForm()">
+        </div>
+        <div id="kanbanFormContent">
+            <label for="kanbanTitle">Kanban Title</label>
+            <input type="text" id="kanbanTitle" name="kanbanTitle" placeholder="Kanban Title">
+            <label for="kanbanDescription">Kanban Description</label>
+            <textarea id="kanbanDescription" placeholder="Kanban Description" name="kanbanDescription"></textarea>
+            <label for="kanbanStatus">Kanban Status</label>
+            <select id="kanbanStatus" name="kanbanStatus">
+                <option value="Not Started">Not Started</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <button id="saveKanban" onclick="saveKanban()">Save</button>
+        </div>
+    </div>
+    <div id="kanbanBar">
+        <span class="filter">Filter</span>
+        <select id="kanbanFilter" onchange="loadKanbans()">
+            <option value="All">All</option>
+            <option value="Not_Started">Not Started</option>
+            <option value="In_Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Overdue">Overdue</option>
+            <option value="Due_Today">Due Today</option>
+            <option value="This_Month">This Month</option>
+        </select>
+    </div>
+  </section>
 </body>
 </html>

@@ -201,6 +201,36 @@ const Projects = sequelize.define('Project', {
     }
 });
 
+//Model for Project Items
+const ProjectItems=sequelize.define('ProjectItem',{
+    itemID:{
+        type:DataTypes.INTEGER,
+        primaryKey:true,
+        autoIncrement:true
+    },
+    Title:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
+    Content:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
+    DueDate:{
+        type:DataTypes.DATEONLY,
+        allowNull:false
+    },
+    Status:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
+    //Foreign Key
+    projectID:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+    }
+});
+
 //Export the models
 module.exports = {
     Users,
@@ -212,7 +242,8 @@ module.exports = {
     createWorkspace,
     createCalendar,
     Tasks,
-    Projects
+    Projects,
+    ProjectItems
 };
 
 
