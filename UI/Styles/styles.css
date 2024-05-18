@@ -2,6 +2,7 @@
 @import "calendar.css";
 @import "tasks.css";
 @import "projects.css";
+@import "kanban.css";
 body{
     margin: 0;
     padding: 0;

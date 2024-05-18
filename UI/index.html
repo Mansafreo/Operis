@@ -310,34 +310,6 @@
     </div>
     <!--Section to show projects-->
     <div id="projectsList">
-    <div class="project">
-        <div class="projectTitle">
-            <p>Operis Personal Productivity</p>
-        </div>
-        <div class="projectContent">
-            <div class="projectCard">
-                <div class="cardHeader">
-                    <p>Description</p>
-                </div>
-                <div class="cardBody">
-                    <p>aafsasfahsgdahsgfahsfasgfhagsfdfg</p>
-                </div>
-                <div class="cardFooter">
-                    <p>Status: In Progress</p>
-                    <p>Due Date: 2023-08-10</p>
-                    <p>Tasks: 50</p>
-                    <div class="cardButtons">
-                        <button class="editButton">
-                            <img src="Images/icons8-edit-50.png" alt="edit" class="icon">
-                        </button>
-                        <button class="deleteButton">
-                            <img src="Images/icons8-trash-24.png" alt="delete" class="icon">
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     </div>
     <!--Section for the Project Form-->
     <div id="projectForm">
@@ -362,46 +334,114 @@
         </div>
   </section>
 
-  <section id="kanban">
+  <section id="kanban" class="hide">
     <div id="kanbanHeading">
-        <img src="Images/icons8-kanban-50.png" alt="kanban" class="icon">
-        <span id="title"><h2>Kanban</h2></span>
-        <div id="addKanban" onclick="toggleKanbanForm()">
+        <img src="Images/icons8-kanban-board-48.png" alt="kanban" class="icon">
+        <span id="title"><h2>Project 36589</h2></span>
+        <div id="addProjectItem" onclick="toggleProjectItemForm()">
             <img src="Images/icons8-plus-24.png" alt="add" class="icon">
-            <span>Add Kanban</span>
+            <span>Add Project Task</span>
         </div>
     </div>
-    <div id="kanbanForm">
-        <div id="kanbanFormHeading">
-            <h2>Add Kanban</h2>
-            <img src="Images/icons8-close-48.png" alt="close" class="icon" onclick="toggleKanbanForm()">
+    <div id="projectItemForm">
+        <div id="projectItemFormHeading">
+            <h2>Add Project Task</h2>
+            <img src="Images/icons8-close-48.png" alt="close" class="icon" onclick="toggleProjectItemForm()">
         </div>
-        <div id="kanbanFormContent">
-            <label for="kanbanTitle">Kanban Title</label>
-            <input type="text" id="kanbanTitle" name="kanbanTitle" placeholder="Kanban Title">
-            <label for="kanbanDescription">Kanban Description</label>
-            <textarea id="kanbanDescription" placeholder="Kanban Description" name="kanbanDescription"></textarea>
-            <label for="kanbanStatus">Kanban Status</label>
+        <div id="projectItemFormContent">
+            <label for="kanbanTitle">Title</label>
+            <input type="text" id="kanbanTitle" name="kanbanTitle" placeholder="Title">
+            <label for="kanbanDescription">Description</label>
+            <textarea id="kanbanDescription" placeholder="Description" name="kanbanDescription"></textarea>
+            <label for="kanbanStatus">Status</label>
             <select id="kanbanStatus" name="kanbanStatus">
-                <option value="Not Started">Not Started</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Completed">Completed</option>
+                <option value="to do">To Do</option>
+                <option value="in progress">In Progress</option>
+                <option value="completed">Completed</option>
             </select>
-            <button id="saveKanban" onclick="saveKanban()">Save</button>
+            <label for="kanbanDueDate">Due Date</label>
+            <input type="date" id="kanbanDueDate" name="kanbanDueDate">
+            <button id="saveProjectItem" onclick="saveProjectItem()">Save</button>
         </div>
     </div>
-    <div id="kanbanBar">
-        <span class="filter">Filter</span>
-        <select id="kanbanFilter" onchange="loadKanbans()">
-            <option value="All">All</option>
-            <option value="Not_Started">Not Started</option>
-            <option value="In_Progress">In Progress</option>
-            <option value="Completed">Completed</option>
-            <option value="Overdue">Overdue</option>
-            <option value="Due_Today">Due Today</option>
-            <option value="This_Month">This Month</option>
-        </select>
+    <!--A 3-column section for the different projectItems-->
+    <!--The items are grouped according to status-->
+    <!--The status can be 'To Do,'In Progress','Completed'-->
+    <div id="kanbanItems">
+        <div class="kanbanItem">
+            <div class="kanbanItemTitle">
+                <p>To Do</p>
+            </div>
+            <div class="kanbanItemContent">
+                <div class="kanbanCard">
+                    <div class="cardHeader">
+                        <p>Task 1</p>
+                    </div>
+                    <div class="cardBody">
+                        <p>Task 1 Description</p>
+                    </div>
+                    <div class="cardFooter">
+                        <p>Status: Not Started</p>
+                        <p>Due Date: 2023-08-10</p>
+                        <div class="cardButtons">
+                            <button class="editButton" onclick="editTask(this)">Edit</button>
+                            <button class="deleteButton" onclick="deleteTask(this)">Delete</button>
+                            <button class="promoteButton" onclick="promoteTask(this)">Promote</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="kanbanItem">
+            <div class="kanbanItemTitle">
+                <p>In Progress</p>
+            </div>
+            <div class="kanbanItemContent">
+                <div class="kanbanCard">
+                    <div class="cardHeader">
+                        <p>Task 2</p>
+                    </div>
+                    <div class="cardBody">
+                        <p>Task 2 Description</p>
+                    </div>
+                    <div class="cardFooter">
+                        <p>Status: In Progress</p>
+                        <p>Due Date: 2023-08-10</p>
+                        <div class="cardButtons">
+                            <button class="editButton" onclick="editTask(this)">Edit</button>
+                            <button class="deleteButton" onclick="deleteTask(this)">Delete</button>
+                            <button class="promoteButton" onclick="promoteTask(this)">Promote</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="kanbanItem">
+            <div class="kanbanItemTitle">
+                <p>Completed</p>
+            </div>
+            <div class="kanbanItemContent">
+                <div class="kanbanCard">
+                    <div class="cardHeader">
+                        <p>Task 3</p>
+                    </div>
+                    <div class="cardBody">
+                        <p>Task 3 Description</p>
+                    </div>
+                    <div class="cardFooter">
+                        <p>Status: Completed</p>
+                        <p>Due Date: 2023-08-10</p>
+                        <div class="cardButtons">
+                            <button class="editButton" onclick="editTask(this)">Edit</button>
+                            <button class="deleteButton" onclick="deleteTask(this)">Delete</button>
+                            <button class="promoteButton" onclick="promoteTask(this)">Promote</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
   </section>
 </body>
 </html>

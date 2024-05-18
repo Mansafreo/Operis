@@ -5,6 +5,9 @@ const modelsPath = path.resolve(__dirname, '../Database','models.js');
 //Import the models.js file
 const {Projects} = require(modelsPath);
 
+//Import some functions from the kanban.js file
+const {toggleKanban} = require('./kanban.js');
+
 
 //To toggle the display of the projects
 function toggleProjects() {
@@ -151,9 +154,21 @@ function createProjectHTML(project) {
     deleteImage.classList.add('icon');
     deleteImage.setAttribute('value', project.projectID);
     deleteImage.addEventListener('click', deleteProject);
-    // Append elements
+    const openImage = document.createElement('img');
+    openImage.src = 'Images/icons8-open-30.png';
+    openImage.alt = 'open';
+    openImage.classList.add('icon');
+    const openButton = document.createElement('button');
+    openButton.classList.add('openButton');
+    // openButton.textContent = 'Open';
+    openButton.setAttribute('value', project.projectID);
+    openButton.addEventListener('click', toggleKanban);
+  
+    // Append elements 
+    openButton.appendChild(openImage);
     editButton.appendChild(editImage);
     deleteButton.appendChild(deleteImage);
+    cardButtonsDiv.appendChild(openButton);
     cardButtonsDiv.appendChild(editButton);
     cardButtonsDiv.appendChild(deleteButton);
     cardHeaderDiv.appendChild(headerParagraph);
