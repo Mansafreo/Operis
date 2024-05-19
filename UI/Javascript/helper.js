@@ -67,13 +67,9 @@ const {
 const kanbanPath = resolve(__dirname, '../Engine', 'kanban.js');//Relative to the HTML in the renderer process
 const { 
     toggleKanban,
-    // saveKanban,
-    // loadKanban,
-    // saveKanbanEdit,
-    // deleteKanban,
-    // toggleKanbanForm,
     toggleProjectItemForm,
     saveProjectItem,
+    closeKanban,
 }= require(kanbanPath);
 
 window.onload = function() {
@@ -81,17 +77,6 @@ window.onload = function() {
     setInterval(set_time, 1000);//Call the set_time function every 1000 milliseconds
     setInterval(set_date, 1000);//Call the set_time function every 1000 milliseconds
 
-    //Toggle the projects
-    toggleProjects();
-    //Load the projects
-    loadProjects();
-    //Get the first project
-    setTimeout(getFirstProject, 1000);
-    function getFirstProject(){
-        let project = document.getElementsByClassName('project')[0];
-        project.querySelector('.openButton').click();
-    }
-    //Toggle the projectItemForm
-    toggleProjectItemForm();
+
 }
 

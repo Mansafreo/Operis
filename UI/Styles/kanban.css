@@ -239,3 +239,12 @@
 #addProjectItem:active{
     transform: perspective(1px) scale(0.9);
 }
+
+#kanbanHeading .icon-close{
+    display: absolute;
+    height: 40px;
+    margin: 15px;
+    margin-right: 10px;
+    left:0 ;
+    cursor: pointer;
+}

@@ -3,7 +3,7 @@ const path = require('path');
 // Define the path to the models.js file
 const modelsPath = path.resolve(__dirname, '../Database','models.js');
 //Import the models.js file
-const {Projects} = require(modelsPath);
+const {Projects,ProjectItems} = require(modelsPath);
 
 //Import some functions from the kanban.js file
 const {toggleKanban} = require('./kanban.js');
@@ -77,9 +77,10 @@ async function loadProjects() {
     //Loop through the projects
     projects.forEach(project => {
         //Create the project HTML
-        const projectHTML = createProjectHTML(project);
+        createProjectHTML(project).then(projectHTML => {
         //Append the project HTML to the projectsList
         projectsList.appendChild(projectHTML);
+         });
     });
 }
 
@@ -103,10 +104,65 @@ async function getProjects() {
         projectsArray.push(project.dataValues);
     });
     }
+    //Not started projects
+    else if (filter == "Not_Started") {
+        // Get all the tasks asynchronously
+        const projects = await Projects.findAll({
+            where: {
+                workspaceID: workspaceID,
+                ProjectStatus: "Not Started"
+            }
+        });
+        // Extract task data and push to tasksArray
+        projects.forEach(project => {
+            projectsArray.push(project.dataValues);
+        });
+    }
+    //In Progress projects
+    else if (filter == "In_Progress") {
+        // Get all the tasks asynchronously
+        const projects = await Projects.findAll({
+            where: {
+                workspaceID: workspaceID,
+                ProjectStatus: "In Progress"
+            }
+        });
+        // Extract task data and push to tasksArray
+        projects.forEach(project => {
+            projectsArray.push(project.dataValues);
+        });
+    }
+    //completed projects
+    else if (filter == "Completed") {
+        // Get all the tasks asynchronously
+        const projects = await Projects.findAll({
+            where: {
+                workspaceID: workspaceID,
+                ProjectStatus: "Completed"
+            }
+        });
+        // Extract task data and push to tasksArray
+        projects.forEach(project => {
+            projectsArray.push(project.dataValues);
+        });
+    }
     return projectsArray;
 }
 
-function createProjectHTML(project) {
+//Function to get the number of project Items that belong to a project
+async function getProjectItems(projectID)
+{
+    //Get the project items
+    const projectItems = await ProjectItems.findAll({
+        where: {
+            projectID: projectID
+        }
+    });
+    return projectItems.length;
+}
+
+//Function to create the project HTML
+async function createProjectHTML(project) {
     // Create elements
     const projectDiv = document.createElement('div');
     projectDiv.classList.add('project');
@@ -135,7 +191,8 @@ function createProjectHTML(project) {
     const tasksParagraph = document.createElement('p');
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     //Will get back to this after assigning tasks to projects
-    tasksParagraph.textContent = `Tasks: ${50}`;
+    const projectItems = await getProjectItems(project.projectID);
+    tasksParagraph.textContent = `Tasks: ${projectItems}`;
     const cardButtonsDiv = document.createElement('div');
     cardButtonsDiv.classList.add('cardButtons');
     const editButton = document.createElement('button');
@@ -163,7 +220,6 @@ function createProjectHTML(project) {
     // openButton.textContent = 'Open';
     openButton.setAttribute('value', project.projectID);
     openButton.addEventListener('click', toggleKanban);
-  
     // Append elements 
     openButton.appendChild(openImage);
     editButton.appendChild(editImage);

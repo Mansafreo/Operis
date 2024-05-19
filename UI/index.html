@@ -342,6 +342,8 @@
             <img src="Images/icons8-plus-24.png" alt="add" class="icon">
             <span>Add Project Task</span>
         </div>
+        <!--close button-->
+        <img src="Images/icons8-close-48.png" alt="close" class="icon-close" onclick="closeKanban()">
     </div>
     <div id="projectItemForm">
         <div id="projectItemFormHeading">
@@ -372,72 +374,24 @@
             <div class="kanbanItemTitle">
                 <p>To Do</p>
             </div>
-            <div class="kanbanItemContent">
-                <div class="kanbanCard">
-                    <div class="cardHeader">
-                        <p>Task 1</p>
-                    </div>
-                    <div class="cardBody">
-                        <p>Task 1 Description</p>
-                    </div>
-                    <div class="cardFooter">
-                        <p>Status: Not Started</p>
-                        <p>Due Date: 2023-08-10</p>
-                        <div class="cardButtons">
-                            <button class="editButton" onclick="editTask(this)">Edit</button>
-                            <button class="deleteButton" onclick="deleteTask(this)">Delete</button>
-                            <button class="promoteButton" onclick="promoteTask(this)">Promote</button>
-                        </div>
-                    </div>
-                </div>
+            <!--To do items-->
+            <div class="kanbanItemContent toDoItems">
             </div>
         </div>
         <div class="kanbanItem">
             <div class="kanbanItemTitle">
                 <p>In Progress</p>
             </div>
-            <div class="kanbanItemContent">
-                <div class="kanbanCard">
-                    <div class="cardHeader">
-                        <p>Task 2</p>
-                    </div>
-                    <div class="cardBody">
-                        <p>Task 2 Description</p>
-                    </div>
-                    <div class="cardFooter">
-                        <p>Status: In Progress</p>
-                        <p>Due Date: 2023-08-10</p>
-                        <div class="cardButtons">
-                            <button class="editButton" onclick="editTask(this)">Edit</button>
-                            <button class="deleteButton" onclick="deleteTask(this)">Delete</button>
-                            <button class="promoteButton" onclick="promoteTask(this)">Promote</button>
-                        </div>
-                    </div>
-                </div>
+            <!--Items in progress-->
+            <div class="kanbanItemContent inProgressItems">
             </div>
         </div>
         <div class="kanbanItem">
             <div class="kanbanItemTitle">
                 <p>Completed</p>
             </div>
-            <div class="kanbanItemContent">
-                <div class="kanbanCard">
-                    <div class="cardHeader">
-                        <p>Task 3</p>
-                    </div>
-                    <div class="cardBody">
-                        <p>Task 3 Description</p>
-                    </div>
-                    <div class="cardFooter">
-                        <p>Status: Completed</p>
-                        <p>Due Date: 2023-08-10</p>
-                        <div class="cardButtons">
-                            <button class="editButton" onclick="editTask(this)">Edit</button>
-                            <button class="deleteButton" onclick="deleteTask(this)">Delete</button>
-                            <button class="promoteButton" onclick="promoteTask(this)">Promote</button>
-                        </div>
-                    </div>
-                </div>
+            <!--Completed items-->
+            <div class="kanbanItemContent completedItems">
             </div>
         </div>
     </div>
