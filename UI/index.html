@@ -66,7 +66,7 @@
                         <img src="Images/icons8-task-50.png" alt="todo" class="icon">
                         Tasks
                     </span>
-                    <span>
+                    <span onclick="toggleNotes()">
                         <img src="Images/icons8-notes-50.png" alt="notes" class="icon">
                         Notes
                     </span>
@@ -397,5 +397,93 @@
     </div>
 
   </section>
+
+  <!--Section for the user's notes-->
+  <section class="notes">
+    <!--Head section-->
+    <div id="notesHeading">
+        <img src="Images/icons8-notes-100 (1).png" alt="notes icon" class="icon">
+        <span id="title"><h2>Notes</h2></span>
+        <div id="addSubject" onclick="toggleSubjectForm()">
+            <img src="Images/icons8-plus-24.png" alt="add" class="icon">
+            <span>Add Subject</span>
+        </div>
+    </div>
+  
+  <!--Section to Filter Projects-->
+  <div id="subjectsBar">
+    <span class="filter">Filter</span>
+    <select id="subjectsFilter" onchange="loadSubjects()">
+        <option value="All">All</option>
+        <option value="Not_Started">Operating Systems</option>
+        <option value="In_Progress">Javascript</option>
+        <option value="Completed">Automata Theory</option>
+        <option value="Overdue">Machine Learning</option>
+        <!--etc-->
+    </select>
+   </div>
+   <!--The form to add subjects-->
+   <!--Section for the Project Form-->
+   <div id="subjectForm">
+    <div id="subjectFormHeading">
+        <h2>Add Subject</h2>
+        <img src="Images/icons8-close-48.png" alt="close" class="icon" onclick="toggleSubjectForm()">
+    </div>
+    <div id="subjectFormContent">
+        <label for="projectName">Subject Name</label>
+        <input type="text" id="subjectName" name="subjectName" placeholder="e.g Operating Systems...">
+        <label for="subjectDescription">Subject Description</label>
+        <textarea id="projectDescription" placeholder="Project Description" name="projectDescription"></textarea>
+        <button id="saveProject" onclick="saveSubject()">Save</button>
+    </div>
+    </div>
+     <!--Section to show the notes for each subject-->
+     <!--The subjects are displayed as divs mimicing the shelves in a bookcase-->
+     <!--The 'shelves' show the notes or 'books' for that subject-->
+     <!--Each 'shelf' is labelled with the subject name-->
+     <!--The 'books' allow the user to open, edit or delete the 'book'-->
+     <div id="subjectsList">
+        <div class="shelf">
+            <div class="shelf-header">
+                <div class="shelf-label">Mathematics</div>
+            </div>
+            <div class="shelf-actions">
+                <button class="shelf-edit-btn">
+                    <img src="Images/icons8-edit-50.png" class="icon">
+                </button>
+                <button class="shelf-delete-btn">
+                    <img src="Images/icons8-trash-24.png" class="icon">
+                </button>
+            </div>
+            <div class="books">
+                <div class="book">
+                    <div class="book-title">Algebra Notes</div>
+                    <div class="book-actions">
+                        <button class="book-open-btn">
+                            <img src="Images/icons8-open-30.png" class="icon">
+                        </button>
+                        <button class="delete-btn">
+                            <img src="Images/icons8-trash-24.png" class="icon">
+                        </button>
+                    </div>
+                </div>
+                <div class="book">
+                    <div class="book-title">Calculus Notes</div>
+                    <div class="book-actions">
+                        <button class="book-open-btn">
+                            <img src="Images/icons8-open-30.png" class="icon">
+                        </button>
+                        <button class="delete-btn">
+                            <img src="Images/icons8-trash-24.png" class="icon">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="add-book">
+                <button class="add-book-btn">Add New Book</button>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>

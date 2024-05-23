@@ -72,11 +72,18 @@ const {
     closeKanban,
 }= require(kanbanPath);
 
+//Notes module
+const notesPath=resolve(__dirname, '../Engine', 'notes.js')
+const{
+    toggleNotes,
+    toggleSubjectForm
+}=require(notesPath)
+
 window.onload = function() {
     generateCurrentMonth();
     setInterval(set_time, 1000);//Call the set_time function every 1000 milliseconds
     setInterval(set_date, 1000);//Call the set_time function every 1000 milliseconds
 
-
+    toggleNotes()
 }
 

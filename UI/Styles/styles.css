@@ -3,6 +3,7 @@
 @import "tasks.css";
 @import "projects.css";
 @import "kanban.css";
+@import "notes.css";
 body{
     margin: 0;
     padding: 0;

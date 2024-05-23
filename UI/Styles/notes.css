@@ -1,0 +1,299 @@
+.notes {
+    background-color: #2e2929;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    height: calc(100vh - 80px);
+    width:calc(100vw - 21vw);
+    display: none;
+}
+#notesHeading{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    background-color: #000;
+    color: white;
+    height: 10%;
+    color: wheat;
+    vertical-align: middle;
+}
+#notesHeading img{
+    display: absolute;
+    height: 60px;
+    margin: 5px;
+    margin-right: 10px;
+    left:0 ;
+}
+#addSubject{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2b2a2a;
+    color: white;
+    height: 80%;
+    margin: 7px 70px;
+    right: 30px;
+    padding: -20px;
+    cursor: pointer;
+    padding-right: 20px !important;
+    margin-right: 20px;
+}
+#addSubject img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+#addSubject span{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+#addSubject:hover{
+    background-color: #1c1c1c;
+    color: #fff;
+}
+#addSubject:active{
+    transform: perspective(1px) scale(0.9);
+}
+#subjectsBar{
+    display: flex;
+    flex-direction: grid;
+    gap: 10px;
+    height: fit-content;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #322707;
+}
+#subjectsBar select{
+    color: white;
+    max-width: 30%;
+    width: fit-content;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 1px solid #5d5d5d;
+    outline: none;
+    background-color: transparent;
+}
+#subjectsBar select option{
+    color: black;
+}
+#subjectsBar .filter{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: middle;
+    height: 100%;
+    margin: 20px 20px;
+}
+
+#subjectForm{
+    display: none;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    height: fit-content;
+    transform: translate(-50%, -50%);
+    background-color: #000;
+    color: white;
+    padding: 20px;
+    border: 1px solid #5d5d5d;
+    z-index: 100;
+    width: 50vw;
+}
+#subjectForm .icon{
+    position: absolute;
+    width: 40px;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+#subjectForm .icon:hover{
+    transform: perspective(1px) scale(1.1);
+}
+#subjectForm .icon:active{
+    transform: perspective(1px) scale(0.9);
+}
+#subjectForm input{
+    width: 95%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #5d5d5d;
+    outline: none;
+}
+#subjectForm textarea{
+    width: 95%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 1px solid #5d5d5d;
+    outline: none;
+}
+#subjectForm select{
+    width: 98%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 1px solid #5d5d5d;
+    outline: none;
+}
+#subjectFormHeading{
+    display: flex;
+    justify-content: center;
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+#subjectFormContent{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#saveSubject{
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    border: 1px solid #5d5d5d;
+    cursor: pointer;
+    outline: none;
+    font-size: 1.5em;
+}
+#saveSubject:hover{
+    background-color: #1c1c1c;
+    color: #fff;
+}
+#saveSubject:active{    transform: perspective(1px) scale(0.9);
+}
+#subjectsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 10px;
+}
+
+.shelf {
+    background-color: #3e3e3e;
+    border: 1px solid #4e4e4e;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.shelf-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.shelf-label {
+    font-size: 2.2em;
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.shelf-actions {
+    display: flex;
+    gap: 5px;
+}
+.shelf img.icon{
+    width:20px
+}
+
+.shelf-actions button {
+    background-color: transparent;
+    border: 1px dotted green;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.shelf-actions .shelf-delete-btn {
+    background-color: #e74c3c;
+}
+
+.shelf-actions .shelf-delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.shelf-actions button:hover {
+    background-color: #207e28;
+}
+
+.books {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.book {
+    background-color: #4e4e4e;
+    border: 1px solid #5e5e5e;
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book-title {
+    font-size: 1em;
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.book-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.book-actions button {
+    background-color: transparent;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.book-actions .delete-btn {
+    background-color: #e74c3c;
+}
+
+.book-actions .delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.book-actions button:hover {
+    background-color: #255725;
+}
+
+.add-book {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.add-book-btn {
+    background-color: #122d0e;
+    border: 1px solid black;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.add-book-btn:hover {
+    background-color: #3da538;
+    box-shadow: 2px 2px black;
+}
