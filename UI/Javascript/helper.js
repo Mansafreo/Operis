@@ -76,7 +76,9 @@ const {
 const notesPath=resolve(__dirname, '../Engine', 'notes.js')
 const{
     toggleNotes,
-    toggleSubjectForm
+    toggleSubjectForm,
+    saveSubject,
+    editSubject,
 }=require(notesPath)
 
 window.onload = function() {

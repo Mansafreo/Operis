@@ -230,6 +230,35 @@ const ProjectItems=sequelize.define('ProjectItem',{
         allowNull:false
     }
 });
+//Declare the subjects model
+/*
+subject[
+    subjectID pk
+    name
+    description
+]
+*/
+const Subjects = sequelize.define('Subject', {
+    subjectID: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,      // Make 'id' the primary key
+        autoIncrement: true    // Enable auto-increment
+    },
+    // Model attributes are defined here
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    //Foreign Key
+    workspaceID: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
+});
 
 //Export the models
 module.exports = {
@@ -243,7 +272,8 @@ module.exports = {
     createCalendar,
     Tasks,
     Projects,
-    ProjectItems
+    ProjectItems,
+    Subjects
 };
 
 
