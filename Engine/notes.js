@@ -136,6 +136,12 @@ function createSubjectDiv(subject){
     deleteIcon.className='icon';
     //Put the delete icon in the delete button
     deleteButton.appendChild(deleteIcon);
+    //Put the subject id in the delete button
+    deleteButton.setAttribute('value',subject.subjectID);
+    //Add an event listener to the delete button
+    deleteButton.addEventListener('click',()=>{
+        deleteSubject(subject.subjectID);
+    });
     //Put the edit button in the shelf actions
     shelfActions.appendChild(editButton);
     //Put the delete button in the shelf actions
@@ -231,6 +237,23 @@ function saveSubjectEdit(e){
     });
 }
 
+
+//Function to delete a subject
+function deleteSubject(id){
+    //Find the subject in the database
+    Subjects.findOne({
+        where:{
+            subjectID:id
+        }
+    }).then((subject)=>{
+        //Delete the subject
+        subject.destroy();
+        //Load the subjects
+        loadSubjects();
+    });
+}
+
+//Export the functions
 module.exports={
     toggleNotes,
     toggleSubjectForm,
