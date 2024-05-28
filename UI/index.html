@@ -7,6 +7,9 @@
     <!--link the styling sheet-->
     <link rel="stylesheet" href="./Styles/styles.css" type="text/css">
     <script src="./Javascript/helper.js" defer></script>
+    <!--Import scripts for syntax highlighting and markdown support-->
+    <script src="../Extern/marked.js"></script>
+    <script src="../Extern/highlight.js"></script>
 </head>
 <body>
     <!--Hidden input to set whether it is a personal or shared workspace-->
@@ -409,19 +412,6 @@
             <span>Add Subject</span>
         </div>
     </div>
-  
-  <!--Section to Filter Projects-->
-  <div id="subjectsBar">
-    <span class="filter">Filter</span>
-    <select id="subjectsFilter" onchange="loadSubjects()">
-        <option value="All">All</option>
-        <option value="Not_Started">Operating Systems</option>
-        <option value="In_Progress">Javascript</option>
-        <option value="Completed">Automata Theory</option>
-        <option value="Overdue">Machine Learning</option>
-        <!--etc-->
-    </select>
-   </div>
    <!--The form to add subjects-->
    <!--Section for the Project Form-->
    <div id="subjectForm">
@@ -483,6 +473,49 @@
                 <button class="add-book-btn">Add New Book</button>
             </div>
         </div>
+    </div>
+    <!--A form to add 'books' or notes-->
+    <!--The form has a field for the name only-->
+    <!--The user can add the content after creating the note-->
+    <div id="bookForm">
+        <div id="bookFormHeading">
+            <h2>Add Book</h2>
+            <img src="Images/icons8-close-48.png" alt="close" class="icon" onclick="toggleBookForm(this)">
+        </div>
+        <div id="bookFormContent">
+            <label for="bookTitle">Book Title</label>
+            <input type="text" id="bookTitle" name="bookTitle" placeholder="Book Title">
+            <button id="saveBook" onclick="saveBook()">Save</button>
+        </div>
+    </div>
+    <!--Section where user can read the rendered file ro choose to edit it-->
+    <div id="bookReader">
+        <!--Title area with the title of the book and a menu at the end for one to choose to edit it or close-->
+        <div id="bookReaderHeading">
+            <h2 class="bookTitle">Algebra Notes</h2>
+            <div id="bookMenu">
+                <button id="editBook" onclick="editBook(event)">Edit</button>
+                <button id="closeBook" onclick="closeBook()">Close</button>
+            </div>
+        </div>
+        <!--The area where the content of the book is rendered-->
+        <div id="rendered">dadsasdasdasdasd</div>
+    </div>
+    <!--Section where one can edit and view their Markdown in realTime-->
+    <div id="bookEditor">
+        <!--Title area with the title of the book and a menu at the end for one to choose to save it or close-->
+        <div id="bookEditorHeading">
+            <h2 class="bookTitle">Algebra Notes</h2>
+            <div id="bookMenu">
+                <button id="saveEdit" class="saveBookEdit" onclick="saveEdit()">Save</button>
+                <button id="closeEdit" onclick="closeEditor()">Close</button>
+            </div>
+        </div>
+        <div id="editor">
+            <!--The area where the content of the book is edited-->
+            <textarea id="rawMarkdown" oninput="liveKeys()" >sdfdsfdsf</textarea>
+            <div id="editorpreview"></div>
+        </div>  
     </div>
 </section>
 </body>

@@ -4,6 +4,8 @@
 @import "projects.css";
 @import "kanban.css";
 @import "notes.css";
+@import "markdown.css";
+@import "highlight.css";
 body{
     margin: 0;
     padding: 0;

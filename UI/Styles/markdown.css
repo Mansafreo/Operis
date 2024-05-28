@@ -1,0 +1,66 @@
+#editor {
+    resize: none;
+    font-size: 16px; /* Slightly larger font for better readability */
+    line-height: 1.5; /* Increased line-height for better readability */
+}
+#rendered pre {
+    background-color: #f5f5f5; /* Light grey background for code blocks */
+    padding: 15px; /* Increased padding for code blocks */
+    border-radius: 6px; /* Rounded corners */
+    overflow-x: auto;
+}
+#rendered img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+#rendered code {
+    font-family: 'Courier New', Courier, monospace; /* Monospaced font for code */
+    font-size: 14px; /* Slightly larger font for code */
+    background-color: #f5f5f5;
+    padding: 2px 4px; /* Padding for inline code */
+    border-radius: 4px; /* Rounded corners for inline code */
+}
+#rendered pre {
+    background-color: #2f363d; /* Slightly darker for code blocks */
+}
+
+#rendered code {
+    background-color: #2f363d; /* Slightly darker for inline code */
+}
+
+/* Improved typography for headers and text */
+#rendered h1,#rendered  h2, 
+#rendered h3, #rendered h4,#rendered  h5,
+#rendered h6 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600; /* Slightly bold */
+    margin-top: 1.2em; /* Spacing above headers */
+    margin-bottom: 0.6em; /* Spacing below headers */
+}
+
+#rendered p {
+    margin-top: 0.8em; /* Spacing above paragraphs */
+    margin-bottom: 0.8em; /* Spacing below paragraphs */
+    line-height: 1.6; /* Increased line-height for paragraphs */
+}
+
+/* Lists styling */
+#rendered ul, #rendered ol {
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+    padding-left: 1.5em; /* Indent for list items */
+}
+
+#rendered li {
+    margin-bottom: 0.5em; /* Space between list items */
+}
+
+/* Make sure all videos are responsive and centered */
+video{
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}

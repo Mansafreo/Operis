@@ -79,6 +79,14 @@ const{
     toggleSubjectForm,
     saveSubject,
     editSubject,
+    toggleBookForm,
+    saveBook,
+    openBookForm,
+    closeBook,
+    openBook,
+    editBook,
+    liveKeys,
+    closeEditor
 }=require(notesPath)
 
 window.onload = function() {

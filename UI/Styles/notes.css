@@ -1,11 +1,13 @@
 .notes {
-    background-color: #2e2929;
     position: absolute;
     top: 80px;
     right: 0;
     height: calc(100vh - 80px);
     width:calc(100vw - 21vw);
     display: none;
+    background-color: #1e1e1e; /* Darker background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+    color: #e0e0e0;  /* Light text for contrast */
 }
 #notesHeading{
     width: 100%;
@@ -58,39 +60,7 @@
 #addSubject:active{
     transform: perspective(1px) scale(0.9);
 }
-#subjectsBar{
-    display: flex;
-    flex-direction: grid;
-    gap: 10px;
-    height: fit-content;
-    overflow-y: auto;
-    padding: 10px;
-    background-color: #322707;
-}
-#subjectsBar select{
-    color: white;
-    max-width: 30%;
-    width: fit-content;
-    padding: 10px;
-    font-size: 1.2em;
-    border: 1px solid #5d5d5d;
-    outline: none;
-    background-color: transparent;
-}
-#subjectsBar select option{
-    color: black;
-}
-#subjectsBar .filter{
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    vertical-align: middle;
-    height: 100%;
-    margin: 20px 20px;
-}
-
-#subjectForm{
+#subjectForm,#bookForm{
     display: none;
     position: absolute;
     top: 45%;
@@ -104,20 +74,20 @@
     z-index: 100;
     width: 50vw;
 }
-#subjectForm .icon{
+#subjectForm .icon,#bookForm .icon{
     position: absolute;
     width: 40px;
     top: 10px;
     right: 10px;
     cursor: pointer;
 }
-#subjectForm .icon:hover{
+#subjectForm .icon:hover,#bookForm .icon:hover{
     transform: perspective(1px) scale(1.1);
 }
-#subjectForm .icon:active{
+#subjectForm .icon:active,#bookForm .icon:active{
     transform: perspective(1px) scale(0.9);
 }
-#subjectForm input{
+#subjectForm input,#bookForm input{
     width: 95%;
     margin: 10px 0;
     padding: 10px;
@@ -125,7 +95,7 @@
     border: 1px solid #5d5d5d;
     outline: none;
 }
-#subjectForm textarea{
+#subjectForm textarea,#bookForm textarea{
     width: 95%;
     margin: 10px 0;
     padding: 10px;
@@ -141,18 +111,18 @@
     border: 1px solid #5d5d5d;
     outline: none;
 }
-#subjectFormHeading{
+#subjectFormHeading,#bookFormHeading{
     display: flex;
     justify-content: center;
     font-size: 1.5em;
     margin: 10px 0;
 }
-#subjectFormContent{
+#subjectFormContent,#bookFormContent{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-#saveSubject{
+#saveSubject,#saveBook{
     padding: 10px;
     background-color: #000;
     color: white;
@@ -167,133 +137,230 @@
 }
 #saveSubject:active{    transform: perspective(1px) scale(0.9);
 }
+
 #subjectsList {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin: 10px;
+    display: grid; /* Use grid for better responsiveness */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; /* Increase spacing for visual breathing room */
+    margin: 20px;
 }
 
+/* Shelves */
 .shelf {
-    background-color: #3e3e3e;
-    border: 1px solid #4e4e4e;
-    border-radius: 8px;
-    padding: 20px;
-    width: 100%;
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-height: 100%;
-    overflow-x: hidden;
+    background-color: #282828;  /* Darker shelf background */
+    border: none; /* Remove the border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    padding: 25px; 
+    border-radius: 12px; /* Softer corners */
     overflow-y: auto;
 }
 
 .shelf-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+    border-bottom: 1px solid #4e4e4e; /* Subtle separator */
+    padding-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .shelf-label {
-    font-size: 2.2em;
-    color: #ffffff;
-    text-decoration: underline;
+    font-size: 1.8em; /* Slightly smaller but still impactful */
+    color: #d4d4d4; /* Softer white for labels */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Add boldness */
 }
 
-.shelf-actions {
-    display: flex;
-    gap: 5px;
-}
-.shelf img.icon{
-    width:20px
+.shelf img.icon {
+    filter: invert(1); /* Invert icon colors for dark mode */
+    width: 24px;
 }
 
-.shelf-actions button {
+/* Buttons (Shelf & Book) */
+.shelf-actions button,
+.book-actions button {
     background-color: transparent;
-    border: 1px dotted green;
-    padding: 5px 10px;
+    border: none; /* Remove default border */
+    padding: 8px 12px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 0.9em;
+    transition: background-color 0.3s; /* Smooth transition */
 }
 
-.shelf-actions .shelf-delete-btn {
-    background-color: #e74c3c;
+.shelf-delete-btn,
+.delete-btn {
+    color: #e74c3c;
 }
 
-.shelf-actions .shelf-delete-btn:hover {
-    background-color: #c0392b;
+.shelf-actions button:hover,
+.book-actions button:hover {
+    background-color: #4e4e4e; /* Subtle hover effect */
 }
 
-.shelf-actions button:hover {
-    background-color: #207e28;
-}
-
-.books {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex-grow: 1;
-}
-
+/* Books */
 .book {
-    background-color: #4e4e4e;
-    border: 1px solid #5e5e5e;
-    border-radius: 4px;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background-color: #383838; /* Lighter background for books */
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 5px 0;
 }
 
 .book-title {
-    font-size: 1em;
-    flex-grow: 1;
-    margin-right: 10px;
+    color: #f0f0f0; /* Bright white for titles */
 }
 
-.book-actions {
-    display: flex;
-    gap: 5px;
-}
-
-.book-actions button {
-    background-color: transparent;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 0.9em;
-}
-
-.book-actions .delete-btn {
-    background-color: #e74c3c;
-}
-
-.book-actions .delete-btn:hover {
-    background-color: #c0392b;
-}
-
-.book-actions button:hover {
-    background-color: #255725;
-}
-
-.add-book {
-    text-align: center;
-    margin-top: 10px;
-}
-
+/* Add Book Button */
 .add-book-btn {
-    background-color: #122d0e;
-    border: 1px solid black;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 4px;
+    background-color: #27ae60; /* Green color for "add" action */
+    color: white;
+    border: none;
+    padding: 12px 20px;
     font-size: 1em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; /* Smoother transition on all properties */
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .add-book-btn:hover {
-    background-color: #3da538;
-    box-shadow: 2px 2px black;
+    background-color: #2ecc71; 
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+/* ... (previous styles) ... */
+
+/* Books */
+.book {
+    display: flex;
+    align-items: center; /* Align book title and actions vertically */
+}
+
+.book-title {
+    flex-grow: 1; /* Allow the title to take up available space */
+    margin-right: auto; /* Push book actions to the right */
+}
+
+.book-actions {
+    margin-left: 10px; /* Add some space between title and actions */
+}
+
+/* Add Book Button */
+.add-book {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    margin-top: 15px;
+}
+
+/* Buttons (Shelf & Book) */
+.shelf-actions button,
+.book-actions button {
+    /* ... (previous styles) ... */
+    border: 1px solid #5e5e5e; /* Add a light border */
+    margin: 5px; /* Add space between buttons */
+}
+
+/* Book Reader Styles */
+#bookReader {
+    display: none; /* Hide the reader by default */
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: calc(100vh - 80px);
+    width: calc(100vw - 21vw);
+    background-color: #282828; /* Slightly lighter dark background for depth */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.3); /* Add a shadow for a floating effect */
+    overflow-y: auto; /* Enable scrolling for long content */
+    padding: 20px; /* Add padding for better content spacing */
+}
+
+#bookReaderHeading {
+    display: flex;
+    justify-content: space-between; /* Align title and menu to opposite ends */
+    align-items: center;
+    background-color: #383838; /* Darker header background */
+    padding: 15px 20px;
+    border-bottom: 1px solid #5e5e5e; /* Subtle separator */
+    margin-bottom: 20px;
+}
+
+.bookTitle {
+    font-size: 1.6em;
+    margin: 0;
+}
+
+#bookMenu {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+#bookMenu button {
+    background-color: transparent;
+    color: #e0e0e0;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#bookMenu button:hover {
+    background-color: #4e4e4e; /* Subtle hover effect */
+}
+
+#rendered {
+    line-height: 1.6; /* Improve readability of rendered text */
+}
+
+#bookEditor{
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: calc(100vh - 80px);
+    width:100vw;
+    background-color: #1e1e1e; /* Darker background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+    color: #e0e0e0;  /* Light text for contrast */
+    z-index: 5;
+}
+
+#bookEditorHeading{
+    display: flex;
+    justify-content: space-between; /* Align title and menu to opposite ends */
+    align-items: center;
+    background-color: #383838; /* Darker header background */
+    padding: 15px 20px;
+    border-bottom: 1px solid #5e5e5e; /* Subtle separator */
+    margin-bottom: 20px;
+}
+
+#bookEditor #editor{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    margin: 0;
+    margin-top: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #24292e; 
+    color: #e1e4e8;
+}
+
+#bookEditor #rawMarkdown,
+#bookEditor #editorpreview {
+    width: 45%;
+    height: 80vh;
+    margin: 1%;
+    padding: 20px; /* Increased padding for better spacing */
+    border: 1px solid #ccc; /* Light border */
+    box-sizing: border-box;
+    overflow-y: auto;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted look */
+    background-color: #24292e; /* GitHub dark background */
+    color: #e1e4e8; /* GitHub light text color */
+    border-color: #373e47; /* GitHub dark border color */
 }

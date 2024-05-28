@@ -6,10 +6,12 @@ const { app, BrowserWindow } = require('electron');
 const mainFile = path.resolve(__dirname, 'UI', 'index.html');
 const dbDirectory = path.resolve(__dirname, 'Database');
 const logsDirectory = path.resolve(__dirname, 'Logs');
+const storageDirectory = path.resolve(__dirname, 'Storage');
 // Define paths to exclude from reloading
 const ignoredPaths = [
   dbDirectory // Exclude the Database directory itself
   , logsDirectory // Exclude the Logs directory itself
+  , storageDirectory // Exclude the Storage directory itself
 ];
 
 // Configure electron-reload with ignored paths

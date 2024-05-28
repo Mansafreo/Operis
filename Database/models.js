@@ -260,6 +260,36 @@ const Subjects = sequelize.define('Subject', {
     }
 });
 
+//A model for the books AKA Notes
+/*
+Notes[
+    Pk noteID
+    name
+    storageLocation
+    FK subjectID
+]
+*/
+const Notes=sequelize.define('Note',{
+    noteID:{
+        type:DataTypes.INTEGER,
+        primaryKey:true,
+        autoIncrement:true
+    },
+    name:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
+    storageLocation:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
+    //Foreign Key
+    subjectID:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+    }
+});
+
 //Export the models
 module.exports = {
     Users,
@@ -273,7 +303,8 @@ module.exports = {
     Tasks,
     Projects,
     ProjectItems,
-    Subjects
+    Subjects,
+    Notes
 };
 
 
