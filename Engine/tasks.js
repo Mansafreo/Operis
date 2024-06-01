@@ -116,17 +116,19 @@ async function getTasks() {
         }
         if(filter=="Overdue")
         {
-                // Get all the tasks asynchronously
+                //The tasks here should have a due date that is less than the current date and not be completed
+                //Get all the tasks asynchronously
                 const tasks = await Tasks.findAll({
                     where: {
                         workspaceID: WID,
                         DueDate: {
                             [Op.lt]: new Date()
+                        },
+                        Status: {
+                            [Op.ne]: "Completed"
                         }
                     }
                 });
-                
-                // Extract task data and push to tasksArray
                 tasks.forEach(task => {
                     tasksArray.push(task.dataValues);
                 });
@@ -239,6 +241,21 @@ async function getTasks() {
                     tasksArray.push(task.dataValues);
                 });
         }
+        if(filter=="Due_Today")
+        {
+                // Get all the tasks asynchronously
+                const tasks = await Tasks.findAll({
+                    where: {
+                        workspaceID: WID,
+                        DueDate: new Date()
+                    }
+                });
+                
+                // Extract task data and push to tasksArray
+                tasks.forEach(task => {
+                    tasksArray.push(task.dataValues);
+                });
+        }
         return tasksArray;
     } catch (error) {
         console.error('Error fetching tasks:', error);
@@ -272,6 +289,9 @@ async function loadTasks()
         //Append the task element to the task container
         taskContainer.appendChild(taskElement);
     });
+
+    //To also update what is displayed in the dashboard
+    loadTasksDashboard();
 }
 
 function createTaskElement(task) {
@@ -442,11 +462,84 @@ function resetForm() {
     form.querySelector('select[name="taskStatus"]').value = "";
 }
 
+//Function to get all tasks due today
+async function getTasksForToday()
+{
+    let dueTasks = [];
+    //Get the workspace ID
+    let WID = document.getElementById("workspaceID").value;
+    //Get the current date
+    let currentDate = new Date();
+    //Get the tasks that are due today
+    await Tasks.findAll({
+        where: {
+            workspaceID: WID,
+            DueDate: currentDate
+        }
+    }).then(tasks => {
+        tasks.forEach(task => {
+            dueTasks.push(task.dataValues);
+        });
+    });
+    return dueTasks;
+}
+//Function to dynamically set the tasks in the dashboard
+async function loadTasksDashboard()
+{
+    let taskContainer = document.getElementsByClassName("itemContent")[0];
+    //Empty the container
+    taskContainer.innerHTML = "";
+    //Function to generate the HTML for the tasks
+    function generateHTML(data) {
+            // Create a paragraph element
+            const p = document.createElement('p');
+            // Set the inner text to the subject
+            p.innerText = data.Title;
+            // Create a line break
+            const br = document.createElement('br');
+            p.appendChild(br);
+            // Create a span element with class "urgency"
+            const urgencySpan = document.createElement('span');
+            urgencySpan.className = 'urgency';
+            // Create a span element for priority
+            const prioritySpan = document.createElement('span');
+            prioritySpan.className = 'priority';
+            prioritySpan.innerText = `Priority:${data.Priority}`;
+            // Create a span element for time
+            const timeSpan = document.createElement('span');
+            timeSpan.className = 'time';
+            timeSpan.innerText = `Due:${data.DueDate}`;
+            // Append priority and time spans to the urgency span
+            urgencySpan.appendChild(prioritySpan);
+            urgencySpan.appendChild(timeSpan);
+            // Append the urgency span to the paragraph
+            p.appendChild(urgencySpan);
+            // Return the constructed HTML element
+            return p;
+    }
+   //Get all the tasks due today
+    let tasks = await getTasksForToday();
+    //Loop through the tasks
+    tasks.forEach(task => {
+        //Create a task element
+        let taskElement = generateHTML(task);
+        //Append the task element to the task container
+        taskContainer.appendChild(taskElement);
+    });
+    if(tasks.length==0)
+    {
+        let p=document.createElement('p');
+        p.textContent="No tasks due today";
+        taskContainer.appendChild(p);
+    }
+}
+
 module.exports = {
     toggleTasks,
     toggleTaskForm,
     saveTask,
     loadTasks,
     saveTaskEdit,
-    deleteTask
+    deleteTask,
+    loadTasksDashboard
 };

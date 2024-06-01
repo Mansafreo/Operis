@@ -79,19 +79,21 @@
                     </span>
                 </div>
             </li>
-            <li>
+            <!-- <li>
                 <img src="Images/icons8-network-folder-53.png" alt="network folder"class="icon">
-                <a>Shared Workspace</a> </li>
+                <a>Shared Workspace</a> 
+            </li> -->
             <li>
                 <img src="Images/icons8-inbox-50.png" alt="Inbox" class="icon">
                 <a>Inbox</a></li>
-            <li>
+            <li onclick="toggleTimeline()">
                 <img src="Images/icons8-timeline-50.png" alt="Timeline" class="icon">
-                <a>My Timeline</a></li>
-            <li>
+                <a>My Timeline</a>
+            </li>
+            <!-- <li>
                 <img src="Images/icons8-achievement-64.png" alt="achievements" class="icon">
                 <a>Achievements</a>
-            </li>
+            </li> -->
         </ul>
     </div>
   </section>
@@ -105,7 +107,8 @@
         <div id="tray">
             <!--The menu bar below the banner-->
             <div id="trayBar">
-                    <h2>My day
+                    <h2 onclick="dashboard()">
+                        My day
                         <img src="Images/icons8-sun-50.png" alt="sun" class="icon">
                     </h2>
                     <h2 onclick="toggleCalendar()">Calendar
@@ -136,16 +139,6 @@
                         <p>Due Today</p>
                     </div>
                     <div class="itemContent">
-                        <p>
-                            Automata Theory
-                            <br>
-                            <span class="urgency">
-                                <span class="priority">Priority:Medium</span>
-                                <span class="time">Due:10:00 AM</span>
-                            </span>
-                        </p>
-                        <p>Task 2</p>
-                        <p>Task 3</p>
                     </div>
                 </div>
                 <div class="item ongoingProjects">
@@ -518,5 +511,7 @@
         </div>  
     </div>
 </section>
+
+<section id="timeline"></section>
 </body>
 </html>

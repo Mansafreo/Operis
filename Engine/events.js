@@ -5,6 +5,7 @@ const { dialog } = require('electron');
 const { generateCalendar } = require('./calendar');
 //Import the path module
 const path = require('path');
+const calendar = require('./calendar');
 //Import the models module
 const modelsPath = path.resolve(__dirname, '../Database', 'models.js');
 const {
@@ -86,6 +87,8 @@ async function saveEvent()
     let year = calendarElement.dataset.year;
     //Generate the calendar
     generateCalendar(year, month);
+     //Reload the dashboard
+     loadEventsDashboard();
 }
 
 async function getEvents(date){
@@ -266,6 +269,8 @@ async function deleteEvent(event)
     let year = calendarElement.dataset.year;
     //Generate the calendar
     generateCalendar(year, month);
+    //Reload the dashboard
+    loadEventsDashboard();
 }
 
 async function updateEvent(event)
@@ -320,6 +325,8 @@ async function updateEvent(event)
     formButton.addEventListener('click',saveEvent);
     //reset the "form" fields
     resetEventsForm();
+     //Reload the dashboard
+     loadEventsDashboard();
 }
 
 function resetEventsForm()
@@ -329,8 +336,73 @@ function resetEventsForm()
     document.getElementById('eventDate').value='';
     document.getElementById('eventTime').value='';
 }
+
+//function to get the ongoing projects
+async function getCurrentEvents()
+{
+    //Get the workspace ID
+    let workspaceID = document.getElementById('workspaceID').value;
+    let currentDate=new Date();
+    //Get the calendar attached to this workspace
+    let calendarID
+    const calendars=await Calendars.findOne({
+        where:{
+            workspaceID:workspaceID
+        }
+    }).then(calendar=>{
+        calendarID=calendar.dataValues.calendarID;
+    })
+    // Get all the tasks asynchronously
+    const events = await Events.findAll({
+        where: {
+            calendarID:calendarID,
+            eventDate: currentDate
+        }
+    });
+    // Create an empty array to store the events
+    const eventsArray = [];
+    // Loop through the events and push the data values to the events array
+    events.forEach(event => {
+        eventsArray.push(event.dataValues);
+    });
+    return eventsArray;
+}
+//Function to load the projects dashboard
+async function loadEventsDashboard()
+{
+    let eventsContainer = document.getElementsByClassName("itemContent")[2];
+    //Empty the container
+    eventsContainer.innerHTML = '';
+    //Function to generate the HTML for the tasks
+    function generateHTML(data) {
+            // Create a paragraph element
+            const p = document.createElement('p');
+            // Set the inner text to the subject
+            p.innerText = data.eventTitle;
+            // Return the constructed HTML element
+            return p;
+    }
+   //Get all the events for the day
+    const events = await getCurrentEvents();
+    //Loop through the events and display them
+    events.forEach(event => {
+        // Create a new element
+        const eventElement = generateHTML(event);
+        // Append the element to the container
+        eventsContainer.appendChild(eventElement);
+    });
+    //If there are no events
+    if(events.length==0)
+    {
+        let p=document.createElement('p');
+        p.textContent="No Events For today";
+        eventsContainer.appendChild(p);
+    }
+}
+
 //export the addEvent function
 module.exports = {
     toggleEventForm
-    ,addEvent,saveEvent,showEventsForDay,toggleEventsBox
+    ,addEvent,saveEvent,showEventsForDay,toggleEventsBox,
+    loadEventsDashboard
 }

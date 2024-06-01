@@ -6,6 +6,10 @@
 @import "notes.css";
 @import "markdown.css";
 @import "highlight.css";
+@import "timeline.css";
+html{
+    scroll-behavior: smooth;
+}
 body{
     margin: 0;
     padding: 0;
@@ -13,11 +17,18 @@ body{
     background-size: fill;
     overflow-x: hidden;
     overflow-y: auto;
-    background-image: url("../Images/pattern_sprinkles-1_1_2_0-0_0_1__393737_666666.png");
+    background-color: rgb(56, 54, 54);
     background-size:fill;
     background-position: center;
 }
-
+/* edit the scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 10px;
+}
 .navigation {
     width: 100%; 
     background-color: rgb(56, 54, 54);
@@ -130,7 +141,8 @@ body{
     position: absolute;
     top:80px;
     min-height: calc(100vh - 80px);
-    border: 1px solid #000;
+    border-top:2px solid #000;
+    border-right: 2px solid #000;
     max-height: 100vh;
 }
 

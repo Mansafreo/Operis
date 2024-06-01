@@ -82,6 +82,9 @@ async function loadProjects() {
         projectsList.appendChild(projectHTML);
          });
     });
+
+    //To load the projects dashboard
+    loadProjectsDashboard();
 }
 
 async function getProjects() {
@@ -351,10 +354,63 @@ function deleteProject(event) {
     loadProjects();
 }
 
+
+//function to get the ongoing projects
+async function getOngoingProjects()
+{
+    //Get the workspace ID
+    let workspaceID = document.getElementById('workspaceID').value;
+    // Get all the tasks asynchronously
+    const projects = await Projects.findAll({
+        where: {
+            workspaceID: workspaceID,
+            ProjectStatus: "In Progress"
+        }
+    });
+    let projectsArray = [];
+    // Extract task data and push to tasksArray
+    projects.forEach(project => {
+        projectsArray.push(project.dataValues);
+    });
+    return projectsArray;
+}
+//Function to load the projects dashboard
+async function loadProjectsDashboard()
+{
+    let projectsContainer = document.getElementsByClassName("itemContent")[1];
+    //Empty the container
+    projectsContainer.innerHTML = "";
+    //Function to generate the HTML for the tasks
+    function generateHTML(data) {
+            // Create a paragraph element
+            const p = document.createElement('p');
+            // Set the inner text to the subject
+            p.innerText = data.ProjectName;
+            // Return the constructed HTML element
+            return p;
+    }
+   //Get all the tasks due today
+    let projects = await getOngoingProjects();
+    //Loop through the tasks
+    projects.forEach(project => {
+        //Create a task element
+        let projectElement = generateHTML(project);
+        //Append the task element to the task container
+        projectsContainer.appendChild(projectElement);
+    });
+    if(projects.length==0)
+    {
+        let p=document.createElement('p');
+        p.textContent="No On-going Projects";
+        projectsContainer.appendChild(p);
+    }
+}
+
 module.exports = {
     toggleProjects,
     toggleProjectForm,
     saveProject,
     loadProjects,
-    deleteProject
+    deleteProject,
+    loadProjectsDashboard
 }

@@ -2,7 +2,6 @@
 //This file is responsible for handling the UI events and calling the appropriate functions in the JS engine
 //Resolve the path for th Engine folder
 const { resolve } = require('path');
-
 //Calendar Module
 const calendarPath = resolve(__dirname, '../Engine', 'calendar.js');//Relative to the HTML in the renderer process
 const { 
@@ -39,6 +38,7 @@ const {
     toggleEventForm,
     showEventsForDay,
     toggleEventsBox,
+    loadEventsDashboard
 }= require(eventPath);
 
 //Tasks Module
@@ -50,6 +50,7 @@ const {
     loadTasks,
     saveTaskEdit,
     deleteTask,
+    loadTasksDashboard
 }= require(tasksPath);
 
 //Projects Module
@@ -61,6 +62,7 @@ const {
     saveProjectEdit,
     deleteProject,
     toggleProjectForm,
+    loadProjectsDashboard,
 }= require(projectsPath);   
 
 //Kanban Module
@@ -89,11 +91,23 @@ const{
     closeEditor
 }=require(notesPath)
 
+//Timeline Module
+const timelinePath = resolve(__dirname, '../Engine', 'timeline.js');//Relative to the HTML in the renderer process
+const { 
+    toggleTimeline,
+}= require(timelinePath);
+
 window.onload = function() {
     generateCurrentMonth();
     setInterval(set_time, 1000);//Call the set_time function every 1000 milliseconds
     setInterval(set_date, 1000);//Call the set_time function every 1000 milliseconds
+    //To make the dashboard active
+    dashboard();
+}
 
-    toggleNotes()
+function dashboard(){
+    loadTasksDashboard();
+    loadProjectsDashboard();
+    loadEventsDashboard();
 }
 
