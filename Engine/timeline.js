@@ -133,7 +133,7 @@ function renderTimeline(data) {
             data[date].projects.forEach(project => {
                 const projectItem = document.createElement('div');
                 projectItem.className = 'item';
-                projectItem.textContent = `${project.ProjectName} - ${project.ProjectDescription} [${project.Projectstatus}]`;
+                projectItem.textContent = `${project.ProjectName} - ${project.ProjectDescription} [${project.ProjectStatus}]`;
                 projectSection.appendChild(projectItem);
             });
             tile.appendChild(projectSection);

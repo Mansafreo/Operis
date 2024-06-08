@@ -1,0 +1,117 @@
+#registration {
+    width:100vw;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    display:none;
+}
+#verification {
+    width:100vw;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    display: none;
+}
+#login{
+    width:100vw;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    display: none;
+}
+#registrationError, #verificationError, #loginError{
+    color: #ff6b6b;
+    font-size: 14px;
+    text-align: center;
+}
+#registration .container, #verification .container, #login .container{
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+#registration h1 , #verification h1, #login h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+#registration .form-group, #verification .form-group, #login .form-group{
+    margin-bottom: 15px;
+}
+#registration .form-group label , #verification .form-group label, #login .form-group label{
+    display: block;
+    margin-bottom: 5px;
+}
+#registration .form-group input, #verification .form-group input, #login .form-group input{
+    width: 95%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333333;
+    color: #ffffff;
+}
+#registration .form-group input:focus , #verification .form-group input:focus, #login .form-group input:focus{
+    outline: none;
+    box-shadow: 0 0 5px #6200ee;
+}
+#registration .form-group .error, #verification .form-group .error, #login .form-group .error{
+    color: #ff6b6b;
+    font-size: 14px;
+}
+#registration .form-group .toggle, #verification .form-group .toggle, #login .form-group .toggle{
+    text-align: center;
+    margin-top: 10px;
+}
+#registration .form-group .toggle a, #verification .form-group .toggle a, #login .form-group .toggle a{
+    color: #6200ee;
+    text-decoration: none;
+}
+#registration .form-group .toggle a:hover , #verification .form-group .toggle a:hover, #login .form-group .toggle a:hover{
+    text-decoration: underline;
+}
+#registration .form-group button, #verification .form-group button, #login .form-group button{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6200ee;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
+#registration .form-group button:hover, #verification .form-group button:hover, #login .form-group button:hover{
+    background-color: #3700b3;
+}
+@media screen and (max-width: 400px) {
+    #registration .container, #verification .container, #login .container{
+        padding: 10px;
+    }
+}

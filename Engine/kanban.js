@@ -12,7 +12,7 @@ function toggleKanban(event){
     //Toggle the kanban board
     kanban.classList.toggle('hide');
     //Set the value of the kanban to the id of the project
-    let projectID=event.target.value;
+    let projectID=event.target.getAttribute('value');
     kanban.setAttribute('value', projectID);
     //Load the project items
     loadProjectItems(projectID);

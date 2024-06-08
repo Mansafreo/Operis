@@ -12,9 +12,83 @@
     <script src="../Extern/highlight.js"></script>
 </head>
 <body>
+    <!--Registration section-->
+    <section id="registration">
+        <div class="container" id="container">
+            <h1>Register</h1>
+            <div class="error" id="registrationError"></div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <div class="error" id="nameError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error" id="emailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <div class="error" id="passwordError"></div>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Register</button>
+                </div>
+                <div class="form-group toggle">
+                    <p>Already have an account? <a href="#" id="loginLink" onclick="switchForm()">Login instead</a></p>
+                </div>
+            </form>
+        </div>    
+    </section>
+
+    <!--Section for verifying account-->
+    <section id="verification">
+        <div class="container" id="verifyContainer">
+            <h1>Verify Account</h1>
+            <div class="error" id="verifyError"></div>
+            <form id="verifyForm">
+                <div class="form-group">
+                    <label for="code">Verification Code</label>
+                    <input type="text" id="code" name="code" required>
+                    <div class="error" id="codeError"></div>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Verify</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!--Login section-->
+    <section id="login">
+        <div class="container" id="loginContainer">
+            <h1>Login</h1>
+            <div class="error" id="lError"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="loginemail" name="email" required>
+                    <div class="error" id="emailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="loginpassword" name="password" required>
+                    <div class="error" id="passwordError"></div>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Login</button>
+                </div>
+                <div class="form-group">
+                    <p>Don't have an account? <a href="#" id="registerLink" onclick="switchForm()">Register instead</a></p>
+                </div>
+            </form>
+        </div>
+    </section>
     <!--Hidden input to set whether it is a personal or shared workspace-->
     <input type="hidden" id="workspaceType" value="Personal">
-    <input type="hidden" id="workspaceID" value="1">
+    <input type="hidden" id="workspaceID" value="7">
     <section  class="switchWorkspace">
             <!--Close Button-->
             <img src="images/icons8-close-48.png" alt="close" class="icon" onclick="toggleSwitchWorkspace()">
@@ -55,16 +129,17 @@
         <!--User Info-->
             <div class="user-info">
                 <p class="username">John Doe</p>
-                <img src="images/user.jpeg" alt="user" class="userIcon"> 
+                <!-- <img src="images/user.jpeg" alt="user" class="userIcon">  -->
             </div>
         <!--Tools-->
             <div class="tools">
-                <img src="images/icons8-settings-50 (1).png" alt="settings" class="settingsIcon">
-                <img src="images/icons8-bell-50.png" alt="notification" class="notificationIcon">
+                <!-- <img src="images/icons8-settings-50 (1).png" alt="settings" class="settingsIcon"> -->
+                <img src="images/icons8-logout-50.png" alt="logout" class="logout">
             </div>
        </div>
     </div>
   </section>
+
 
   <section class="sidebar">
     <div class="sidebarLinks">
@@ -105,9 +180,9 @@
                 <img src="Images/icons8-network-folder-53.png" alt="network folder"class="icon">
                 <a>Shared Workspace</a> 
             </li> -->
-            <li>
-                <img src="Images/icons8-inbox-50.png" alt="Inbox" class="icon">
-                <a>Inbox</a></li>
+            <li onclick="sync()">
+                <img src="Images/icons8-sync-50.png" alt="Sync" class="icon syncIcon" id="syncButton">
+                <a>Sync </a></li>
             <li onclick="toggleTimeline()">
                 <img src="Images/icons8-timeline-50.png" alt="Timeline" class="icon">
                 <a>My Timeline</a>

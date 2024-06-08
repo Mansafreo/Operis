@@ -5,6 +5,21 @@ const {Workspaces,Users,Calendars}=require(modelsPath);
 const calendarPath = path.resolve(__dirname, 'calendar.js');
 const calendar=require(calendarPath);
 //Function to get all workspaces from the database
+function getWorkspace()
+{
+   //Get the "Default" workspace
+    Workspaces.findOne({
+         where:{
+              workspaceName:'Default'
+         }
+    }).then(workspace=>{
+        document.getElementById('workspaceID').value=workspace.workspaceID;
+         return workspace.dataValues.workspaceID;
+    }).catch(err=>{
+         console.log(err)
+    })
+}
+
 async function getWorkspaces()
 {
     return Workspaces.findAll().then(workspaces=>{
@@ -172,6 +187,8 @@ function switchWorkspace()
     cworkspaceName.innerText=workspaceName;
     //Close the workspace options
     toggleSwitchWorkspace();
+    //call the dashboard function
+    dashboard();
 }
 
 module.exports={
@@ -180,5 +197,6 @@ module.exports={
     createWorkspace,
     getCurrentWorkspace,
     deleteWorkspace,
-    switchWorkspace
+    switchWorkspace,
+    getWorkspace
 }

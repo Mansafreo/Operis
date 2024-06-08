@@ -221,6 +221,7 @@ async function createProjectHTML(project) {
     const openButton = document.createElement('button');
     openButton.classList.add('openButton');
     // openButton.textContent = 'Open';
+    openImage.setAttribute('value', project.projectID);
     openButton.setAttribute('value', project.projectID);
     openButton.addEventListener('click', toggleKanban);
     // Append elements 
