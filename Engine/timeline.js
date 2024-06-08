@@ -73,7 +73,7 @@ async function fetchTimelineData() {
     }
 }
 
-
+//Function to render the timeline
 function renderTimeline(data) {
     const timeline = document.getElementById('timeline');
     // Clear the timeline before rendering

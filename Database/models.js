@@ -42,6 +42,11 @@ const Workspaces = sequelize.define('Workspace', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    //workspacename
+    workspaceName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     //Foreign Key
     userID: {
         type: DataTypes.INTEGER,

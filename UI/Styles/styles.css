@@ -31,7 +31,7 @@ body{
 }
 .navigation {
     width: 100%; 
-    background-color: rgb(56, 54, 54);
+    background-color: rgb(34, 33, 33);
     color: #fff;
     padding: 10px; 
     box-sizing: border-box; 
@@ -100,7 +100,7 @@ body{
 #navbar div img{
     margin: -10px 10px;
 }
-.search {
+.app-name{
     position: absolute;
     left: 25vw;
     display: flex;
@@ -110,30 +110,9 @@ body{
     width: 50%;
     padding: 10px;
     border-radius: 5px;
-    background-color: rgb(217, 217, 217, 1);
+    background-color: rgb(34, 33, 33);
     margin-top: 20px;
     transition: 2s;
-}
-.search input[type="text"] {
-    padding: 8px;
-    width: 200px; /* Example width */
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    outline: none;
-    width:80%;
-    background-color: transparent;
-    border: none;
-    font-size: large;
-    color: black;
-}
-.search .searchIcon img{
-    width: 30px;
-    height: 30px;
-    margin-right: 10px; 
-}
-.search input:focus{
-    transition: 2s;
-    width: 100%;
 }
 .sidebar{
     width:20vw;
@@ -142,7 +121,7 @@ body{
     top:80px;
     min-height: calc(100vh - 80px);
     border-top:2px solid #000;
-    border-right: 2px solid #000;
+    border-left: 2px solid #000;
     max-height: 100vh;
 }
 
@@ -385,4 +364,75 @@ li.my_workspace:hover{
 .itemContent .urgency .time{
     float: right;
     color: rgb(78, 44, 169);
+}
+
+
+.switchWorkspace {
+    /* Existing Positioning */
+    display: none;
+    position: absolute;
+    z-index: 100; /* Ensure it's always on top */
+    top: 40%;
+    left: 55%;
+    transform: translate(-50%, -50%); /* Center perfectly */
+
+    /* Styling Enhancements */
+    background-color: #181818; /* Darker, richer background */
+    color: #e8e8e8;              /* Light, high-contrast text */
+    padding: 30px;             /* Increase padding for breathing room */
+    border: none;               /* Remove the default border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle drop shadow */
+    border-radius: 8px;         /* Rounded corners */
+    font-family: 'Roboto', sans-serif; /* Modern, clean font */
+    flex-direction: column; 
+    gap: 15px;
+}
+
+/* Style the Heading */
+.currentWorkspace h1 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #d9d9d9;
+}
+
+/* Style Form Elements */
+.switchWorkspace input[type="text"],
+.switchWorkspace select {
+    background-color: #282828;
+    color: #e8e8e8;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* Style Buttons */
+.switchWorkspace button {
+    background-color: #333;
+    color: #e8e8e8;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer; /* Indicate interactivity */
+    transition: background-color 0.2s; /* Smooth hover effect */
+    margin-top: 10px;
+}
+
+.switchWorkspace button:hover {
+    background-color: #444;
+}
+
+.switchWorkspace img{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.switchWorkspace input{
+    outline: none;
 }

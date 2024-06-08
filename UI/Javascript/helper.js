@@ -97,12 +97,24 @@ const {
     toggleTimeline,
 }= require(timelinePath);
 
+//Workspace Module
+const workspacePath = resolve(__dirname, '../Engine', 'workspace.js');//Relative to the HTML in the renderer process
+const {
+    toggleSwitchWorkspace,
+    loadWorkspace,
+    createWorkspace,
+    deleteWorkspace,
+    switchWorkspace
+}= require(workspacePath);
+
 window.onload = function() {
     generateCurrentMonth();
     setInterval(set_time, 1000);//Call the set_time function every 1000 milliseconds
     setInterval(set_date, 1000);//Call the set_time function every 1000 milliseconds
     //To make the dashboard active
     dashboard();
+    //Load the workspace Name
+    loadWorkspace();
 }
 
 function dashboard(){
@@ -110,4 +122,38 @@ function dashboard(){
     loadProjectsDashboard();
     loadEventsDashboard();
 }
+
+//Function to set everthing to none display
+function home()
+{
+    let ids=[
+        'kanban',
+        'eventForm',
+        'eventsBox',
+        'taskForm',
+        'subjectForm',
+        'bookForm',
+        'bookReader',
+        'bookEditor',
+        'timeline',
+        'projectItemForm',
+        'projectForm',
+    ]
+    let classes=[
+        'projects',
+        'calendar',
+        'tasks',
+        'notes',
+    ]
+    ids.forEach(id=>{
+        document.getElementById(id).style.display='none'
+    })
+    classes.forEach(cl=>{
+        let elements=document.getElementsByClassName(cl)
+        for(let i=0;i<elements.length;i++){
+            elements[i].style.display='none'
+        }
+    })
+}
+
 

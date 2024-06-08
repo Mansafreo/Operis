@@ -15,20 +15,42 @@
     <!--Hidden input to set whether it is a personal or shared workspace-->
     <input type="hidden" id="workspaceType" value="Personal">
     <input type="hidden" id="workspaceID" value="1">
+    <section  class="switchWorkspace">
+            <!--Close Button-->
+            <img src="images/icons8-close-48.png" alt="close" class="icon" onclick="toggleSwitchWorkspace()">
+            <div class="currentWorkspace">
+                <h1><u>Current Workspace:</u></h1>
+                <h3 class="cworkspaceName">Personal Workspace</h3>
+            </div>
+            <!--A select form to allow the user to switch the workspaces-->
+            <div class="selectWorkspace">
+                <select name="workspaces" id="workspaces">
+                </select>
+                <button id="switchWorkspace" onclick="switchWorkspace()">Switch</button>
+                <!--Button to delete the workspace-->
+                <button id="deleteWorkspace" onclick="deleteWorkspace()">Delete</button>
+            </div>
+            <!--Form to allow the user to create a new workspace-->
+            <div class="createWorkspace">
+                <h2><u>Create a new Workspace</u></h2>
+                <input type="text" id="workspaceNameInput" placeholder="Workspace Name">
+                <button id="createWorkspace" onclick="createWorkspace()">Create</button>
+            </div>
+            <div id="workspaceMessage">Workspace created !</div>
+    </section>
 
    <section class="navigation">
        <div id="navbar">
         <!--Button to switch workspaces-->
-            <div class="add-workspace">
+            <div class="add-workspace" onclick="toggleSwitchWorkspace()">
                 <!--plus sign icon-->
                 <img src="images/icons8-switch-48.png" alt="plus" class="plusIcon">
                 <button id="add-workspace">Switch Workspace</button>
             </div>
-        <!--search bar for the workspace-->
-            <div class="search">
-                <label for="search" class="searchIcon"><img src="images/icons8-search-50.png" alt="search"></label>
-                <input type="text" id="search" placeholder="Search Workspace">
-            </div>
+        <!--Application Name-->
+        <div class="app-name">
+                <h1>Operis</h1>
+        </div>
         <div class="top-right">
         <!--User Info-->
             <div class="user-info">
@@ -47,18 +69,18 @@
   <section class="sidebar">
     <div class="sidebarLinks">
         <ul>
-            <li>
+            <li onclick="home()">
                 <img src="images/icons8-home-48.png" alt="home" class="icon">
                 <a>Home</a>
             </li>
-            <li>
+            <!-- <li>
                 <img src="images/icons8-stream-50.png" alt="activity" class="icon">
                 <a>Stream</a>
-            </li>
+            </li> -->
             <li class="my_workspace">
                 <div class="toggle">
-                <a>My Workspace</a>
-                <img src="./Images/icons8-dropdown-50.png" class="dropdown">
+                <a>Workspace Items</a>
+                <!-- <img src="./Images/icons8-dropdown-50.png" class="dropdown"> -->
                 </div><br>
                 <div id="workspace_sublets">
                     <span onclick="toggleCalendar()">
@@ -114,12 +136,12 @@
                     <h2 onclick="toggleCalendar()">Calendar
                         <img src="Images/icons8-calendar-50.png" alt="calendar" class="icon">
                     </h2>
-                    <h2>Backlog
+                    <!-- <h2>Backlog
                         <img src="Images/icons8-backlog-50.png" alt="backlog" class="icon">
                     </h2>
                     <h2>Add Item
                         <img src="Images/icons8-plus-24.png" alt="add" class="icon">
-                    </h2>  
+                    </h2>   -->
             </div>
             <hr>
             <!--For the time and date-->
@@ -299,9 +321,9 @@
             <option value="Not_Started">Not Started</option>
             <option value="In_Progress">In Progress</option>
             <option value="Completed">Completed</option>
-            <option value="Overdue">Overdue</option>
+            <!-- <option value="Overdue">Overdue</option>
             <option value="Due_Today">Due Today</option>
-            <option value="This_Month">This Month</option>
+            <option value="This_Month">This Month</option> -->
         </select>
     </div>
     <!--Section to show projects-->

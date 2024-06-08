@@ -2,7 +2,7 @@ const path = require('path');//importing the path module
 const { Op } = require('sequelize');//importing the Op object from the sequelize module
 //Import the models module
 const modelsPath = path.resolve(__dirname, '../Database', 'models.js');//Relative to the HTML in the renderer process
-const {Events}=require(modelsPath);//importing the Events model from the models file
+const {Events,Calendars}=require(modelsPath);//importing the Events model from the models file
 //file to create the content in the calendar page
 async function generateCalendar(year, month) {
     const calendarElement = document.getElementById('calendar');
@@ -78,14 +78,33 @@ async function createEventBubbles(year, month) {
         }
     }
 }
+//Function to get the calendarId associated with the workspace
+async function getCalendarId(workspaceID) {
+    try {
+        const calendar = await Calendars.findOne({
+            where: {
+                workspaceID: workspaceID
+            }
+        });
+        return calendar.dataValues.calendarID;
+    } catch (error) {
+        console.error("Error fetching calendar:", error);
+        return null;
+    }
+}
+
+
 async function getEvents(year, month) {
+    let workspaceID = document.getElementById('workspaceID').getAttribute('value');
+    let calendarID = await getCalendarId(workspaceID);
     // Dates are stored in the form yyyy-mm-dd
     try {
         const events = await Events.findAll({
             where: {
                 eventDate: {
                     [Op.startsWith]: `${year}-${month}`
-                }
+                },
+                calendarID: calendarID
             }
         });
         return events;
@@ -167,6 +186,29 @@ function toggleCalendar() {
     }
 }
 
+//Function to delete a calendar and associated events
+async function deleteCalendar(workspaceID)
+{ 
+    await Calendars.destroy({
+        where: {
+            workspaceID: workspaceID
+        }
+    }).then(calendar=>{
+       //Delete the events
+         Events.destroy({
+              where:{
+                calendarID:calendar.dataValues.calendarID
+              }
+         }).then(events=>{
+              console.log('Calendar and events deleted')
+         }).catch(err=>{
+              console.log(err)
+         })
+    }).catch(err=>{
+        console.log(err)
+    }
+    )
+}
 
 module.exports={
     generateCalendar:generateCalendar,//exporting the function
@@ -177,4 +219,5 @@ module.exports={
     previousMonth:previousMonth,//exporting the function
     replaceCalendarHead:replaceCalendarHead,//exporting the function
     toggleCalendar:toggleCalendar,//exporting the function
+    deleteCalendar:deleteCalendar//exporting the function
 }
