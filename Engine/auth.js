@@ -7,6 +7,7 @@ const modelsPath = resolve(__dirname, '../Database', 'models.js');
 const { Users,Calendars,Workspaces } = require(modelsPath);
 const fs = require('fs');
 const path = require('path');
+const { sync } = require('./sync.js');
 
 //To check whether there is a verified user 
 function checkUser() {
@@ -57,7 +58,7 @@ function register() {
                     username: username,
                     email: email,
                 });
-                checkAuth();
+                // checkAuth();
             }
             //Display the error message
             else {
@@ -97,8 +98,12 @@ function verify()
                     where:{
                         email:document.getElementById('email').value
                     }
+                }).then(user=>{
+                    let userP=document.getElementsByClassName('user-info')[0];
+                    userP.querySelector('.username').textContent=user.dataValues.username;
                 });
                 initializeWorkspaces();
+                setName(document.getElementById('name').value);
             }
             //Display the error message
             else {
@@ -136,11 +141,12 @@ function login() {
                 login.style.display='none';
                 // initializeWorkspaces();
                 syncDown(email);
-                checkAuth();
+                let username=response.data.data.name;
+                setName(username);
             }
             //Display the error message
             else {
-                let lError=document.getElementById('loginError');
+                let lError=document.getElementById('lError');
                 lError.textContent=response.data.message;
             }
         })
@@ -173,8 +179,21 @@ function initializeWorkspaces()
             });
         }
     });
+    setWorkspace();
 }
 
+//Function to logout
+function logout() {
+    //Delete the user from the database
+    Users.destroy({
+        where: {
+            verified: true
+        }
+    });
+    //Make the registration form visible
+    let registration=document.getElementById('registration');
+    registration.style.display='flex';
+}
 
 //Function to syncDown
 function syncDown(email) {
@@ -199,6 +218,8 @@ function syncDown(email) {
                 console.log('File written to database folder: ' + fileName);
                 }
             });
+        }).then(() => {
+            setWorkspace();
         })
         .catch((error) => {
             console.error(error);
@@ -210,8 +231,7 @@ async function checkAuth()
     let user=await checkUser();
     if(user)
     {
-        let userP=document.getElementsByClassName('user-info')[0];
-        userP.querySelector('.username').textContent=user.username;
+        setName(user.username);
         return true;
     }
     else{
@@ -220,10 +240,38 @@ async function checkAuth()
         registration.style.display='flex';
     }
 } 
+
+
+function setName(name)
+{
+    let userP=document.getElementsByClassName('user-info')[0];
+    userP.querySelector('.username').textContent=name;
+}
+
+
+//Function to set the workspaceID in the UI
+async function setWorkspace()
+{
+    //First get the user
+    let user=await checkUser();
+    //Get the workspaceID from the database that belongs to the user
+    Workspaces.findOne({
+        where:{
+            userID:user.userID
+        }
+    }).then(workspace=>{
+        //Set the workspaceID in the UI
+        document.getElementById('workspaceID').value=workspace.dataValues.workspaceID;
+    });
+}
+
+
 module.exports = {
   register,
   verify,
   checkUser,
   login,
-    checkAuth
+  checkAuth,
+  logout,
+  setWorkspace
 }

@@ -27,10 +27,14 @@ function createWindow() {
     fullscreen: false,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
+      //hide the web tools
+      devTools: false
     }
   });
 
+  // Hide the menu bar
+  mainWindow.setMenu(null);
   // Load your HTML file or URL
   mainWindow.loadFile(mainFile);
 }

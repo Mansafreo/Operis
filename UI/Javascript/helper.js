@@ -117,7 +117,9 @@ const {
     verify,
     checkUser,
     login,
-    checkAuth
+    checkAuth,
+    logout,
+    setWorkspace
 }= require(authPath);
 
 //sync Module
@@ -143,10 +145,11 @@ window.onload = function() {
     //Check if the user is authenticated
     checkAuth();
     getWorkspace();
-
     //Set an interval for the sync function
     //About every 10 minutes
     setInterval(sync, 600000);
+
+    setWorkspace();
 }
 
 function dashboard(){
@@ -225,6 +228,7 @@ function registerForm()
         if (isValid) {
             register();//Call the register function from the auth module
         }
+        home()
     });
 }
 
@@ -232,10 +236,10 @@ function LoginForm()
 {
     document.getElementById('loginForm').addEventListener('submit', function(event) {
         event.preventDefault();
-
         // Clear previous errors
         document.getElementById('lError').textContent = '';
         login();//Call the login function from the auth module
+        home();
     });
 }
 

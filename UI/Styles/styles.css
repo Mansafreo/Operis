@@ -11,6 +11,9 @@
 html{
     scroll-behavior: smooth;
 }
+.logout{
+    cursor: pointer;
+}
 body{
     margin: 0;
     padding: 0;
