@@ -10,6 +10,7 @@
     <!--Import scripts for syntax highlighting and markdown support-->
     <script src="../Extern/marked.js"></script>
     <script src="../Extern/highlight.js"></script>
+    <script src="../Extern/chart.js"></script>
 </head>
 <body>
     <!--Registration section-->
@@ -191,6 +192,10 @@
                 <img src="Images/icons8-achievement-64.png" alt="achievements" class="icon">
                 <a>Achievements</a>
             </li> -->
+            <li onclick="toggleReports()">
+                <img src="Images/icons8-stats-50.png" alt="reports" class="icon">
+                <a>Stats</a>
+            </li>
         </ul>
     </div>
   </section>
@@ -606,6 +611,43 @@
             <textarea id="rawMarkdown" oninput="liveKeys()" >sdfdsfdsf</textarea>
             <div id="editorpreview"></div>
         </div>  
+    </div>
+</section>
+
+<!--Reports Section-->
+<section id="reports">
+    <div class="chart-container">
+        <canvas id="tasksCompletedChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="projectsCompletedChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="outstandingTasksProjectsChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="notesCreatedChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="averageBooksPerSubjectChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="averageTaskCompletionTimeChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="averageItemsInProjectChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="booksPerSubjectChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="tasksPerProjectChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="tasksPerMonthChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="eventsPerMonthChart"></canvas>
     </div>
 </section>
 

@@ -29,12 +29,12 @@ function createWindow() {
       nodeIntegration: true,
       contextIsolation: false,
       //hide the web tools
-      devTools: false
+      // devTools: false
     }
   });
 
-  // Hide the menu bar
-  mainWindow.setMenu(null);
+  // // Hide the menu bar
+  // mainWindow.setMenu(null);
   // Load your HTML file or URL
   mainWindow.loadFile(mainFile);
 }

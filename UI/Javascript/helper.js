@@ -128,6 +128,14 @@ const {
     sync
 }= require(syncPath);
 
+//Reports module
+const reportsPath=resolve(__dirname, '../Engine', 'report.js')
+const{
+    drawCharts,
+    fetchSummaryData,
+    toggleReports
+}=require(reportsPath)
+
 window.onload = function() {
     generateCurrentMonth();
     setInterval(set_time, 1000);//Call the set_time function every 1000 milliseconds
@@ -150,6 +158,7 @@ window.onload = function() {
     setInterval(sync, 600000);
 
     setWorkspace();
+
 }
 
 function dashboard(){

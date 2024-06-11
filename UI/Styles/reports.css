@@ -1,0 +1,85 @@
+#reports {
+    display: flex; /* Align charts in a row */
+    flex-wrap: wrap; /* Allow charts to wrap to the next line */
+    justify-content: space-between; /* Distribute space between charts */
+    padding: 20px; 
+    width:calc(100vw - 21vw);
+    overflow-y: auto;
+}
+
+/* Grid layout for chart containers */
+#reports .chart-container {
+    background-color: #282828; 
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 10px; /* Top/bottom margin, 0 for left/right */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    width: calc(50% - 20px); 
+    box-sizing: border-box; 
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    #reports .chart-container {
+        width: calc(50% - 20px); 
+    }
+}
+
+@media (max-width: 768px) {
+    #reports .chart-container {
+        width: calc(100% - 20px); 
+    }
+}
+
+/* Chart.js Styling */
+/* ... (No changes here) ... */
+
+
+
+#reports {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    height: calc(100vh - 80px);
+    overflow-y: auto; /* Keep scrolling if content overflows */
+    width: calc(100vw - 21vw);
+    background-color: #1b1b1b;
+    z-index: 10;
+    display: flex; /* Align charts in a row */
+    flex-direction: column; 
+    padding: 20px; /* Add padding for spacing */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    #reports .chart-container {
+        width: calc(50% - 20px); /* Two columns on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    #reports .chart-container {
+        width: calc(100% - 20px); /* Single column on small screens */
+    }
+}
+
+/* Chart.js Styling */
+.chart-container canvas {
+    max-width: 100%;
+    height: 250px; /* Fixed chart height for consistency */
+}
+
+.chartjs-tooltip {
+    background: rgba(255, 255, 255, 0.8); /* Lighter tooltip background */
+    color: #333;
+}
+
+.chartjs-legend {
+    background-color: #282828; /* Match legend to chart background */
+    color: #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight:bold ;
+    font-size: 1.05em;
+}

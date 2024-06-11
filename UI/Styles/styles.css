@@ -8,6 +8,7 @@
 @import "markdown.css";
 @import "highlight.css";
 @import "timeline.css";
+@import "reports.css";
 html{
     scroll-behavior: smooth;
 }

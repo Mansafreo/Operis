@@ -135,9 +135,6 @@ const Tasks = sequelize.define('Task', {
     }
 });
 
-
-
-
 //sync the model with the database
 function sync() {
     sequelize.sync()
@@ -295,6 +292,26 @@ const Notes=sequelize.define('Note',{
     }
 });
 
+Workspaces.hasMany(Subjects, { foreignKey: 'workspaceID' });
+Subjects.belongsTo(Workspaces, { foreignKey: 'workspaceID' });
+
+Subjects.hasMany(Notes, { foreignKey: 'subjectID' });
+Notes.belongsTo(Subjects, { foreignKey: 'subjectID' });
+
+Workspaces.hasMany(Projects, { foreignKey: 'workspaceID' });
+Projects.belongsTo(Workspaces, { foreignKey: 'workspaceID' });
+
+Projects.hasMany(ProjectItems, { foreignKey: 'projectID' });
+ProjectItems.belongsTo(Projects, { foreignKey: 'projectID' });
+
+Workspaces.hasMany(Tasks, { foreignKey: 'workspaceID' });
+Tasks.belongsTo(Workspaces, { foreignKey: 'workspaceID' });
+
+Workspaces.hasMany(Calendars, { foreignKey: 'workspaceID' });
+Calendars.belongsTo(Workspaces, { foreignKey: 'workspaceID' });
+
+Calendars.hasMany(Events, { foreignKey: 'calendarID' });
+Events.belongsTo(Calendars, { foreignKey: 'calendarID' });
 //Export the models
 module.exports = {
     Users,
